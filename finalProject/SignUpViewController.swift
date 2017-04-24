@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SignUp: UIViewController {
     
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "email..."
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.02)
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
         return textField
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "username..."
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.02)
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
         return textField
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         textField.placeholder = "password..."
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.02)
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
         return textField
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     
     let signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
@@ -61,8 +61,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainColor = UIColor(hex: "F1FAFB")
-        self.view.backgroundColor = mainColor
+        self.view.backgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)
         
         view.addSubview(plusPhotoButton)
         
