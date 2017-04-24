@@ -12,6 +12,7 @@
 		1842534A1EADBBDE00CCB09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184253481EADBBDE00CCB09E /* Main.storyboard */; };
 		1842534C1EADBBDE00CCB09E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1842534B1EADBBDE00CCB09E /* Assets.xcassets */; };
 		1842534F1EADBBDE00CCB09E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842534D1EADBBDE00CCB09E /* LaunchScreen.storyboard */; };
+		184253571EADC55300CCB09E /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253561EADC55300CCB09E /* UIColor+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1842534B1EADBBDE00CCB09E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1842534E1EADBBDE00CCB09E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		184253501EADBBDE00CCB09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		184253561EADC55300CCB09E /* UIColor+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		184253431EADBBDE00CCB09E /* finalProject */ = {
 			isa = PBXGroup;
 			children = (
+				184253561EADC55300CCB09E /* UIColor+extensions.swift */,
 				184253441EADBBDE00CCB09E /* AppDelegate.swift */,
 				184253461EADBBDE00CCB09E /* ViewController.swift */,
 				184253481EADBBDE00CCB09E /* Main.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				184253471EADBBDE00CCB09E /* ViewController.swift in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
+				184253571EADC55300CCB09E /* UIColor+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
