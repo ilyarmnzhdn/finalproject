@@ -14,6 +14,8 @@
 		1842534F1EADBBDE00CCB09E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842534D1EADBBDE00CCB09E /* LaunchScreen.storyboard */; };
 		184253571EADC55300CCB09E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253561EADC55300CCB09E /* Extensions.swift */; };
 		1842535A1EADD8CB00CCB09E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184253591EADD8CB00CCB09E /* GoogleService-Info.plist */; };
+		1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD211EAF625C0021E50E /* MainTabBarController.swift */; };
+		1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD231EAF631C0021E50E /* UserProfileController.swift */; };
 		240BBB1AADA95F679D9EB79A /* Pods_finalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3EA2178C399348155D0DB8 /* Pods_finalProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		184253501EADBBDE00CCB09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184253561EADC55300CCB09E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		184253591EADD8CB00CCB09E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1862FD211EAF625C0021E50E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		1862FD231EAF631C0021E50E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		1DAC15E170BFBED3588A3B7F /* Pods-finalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.release.xcconfig"; sourceTree = "<group>"; };
 		419E3208DC36C282CD676C42 /* Pods-finalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		4F3EA2178C399348155D0DB8 /* Pods_finalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,10 +88,12 @@
 			children = (
 				184253581EADCF2F00CCB09E /* Utils */,
 				184253441EADBBDE00CCB09E /* AppDelegate.swift */,
+				1862FD211EAF625C0021E50E /* MainTabBarController.swift */,
+				1862FD231EAF631C0021E50E /* UserProfileController.swift */,
 				184253461EADBBDE00CCB09E /* SignUpViewController.swift */,
 				184253481EADBBDE00CCB09E /* Main.storyboard */,
-				1842534B1EADBBDE00CCB09E /* Assets.xcassets */,
 				1842534D1EADBBDE00CCB09E /* LaunchScreen.storyboard */,
+				1842534B1EADBBDE00CCB09E /* Assets.xcassets */,
 				184253501EADBBDE00CCB09E /* Info.plist */,
 				184253591EADD8CB00CCB09E /* GoogleService-Info.plist */,
 			);
@@ -229,6 +235,8 @@
 			files = (
 				184253471EADBBDE00CCB09E /* SignUpViewController.swift in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
+				1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */,
+				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
 				184253571EADC55300CCB09E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +405,7 @@
 				184253551EADBBDE00CCB09E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

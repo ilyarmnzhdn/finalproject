@@ -21,7 +21,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func handlePlusPhoto(){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.isEditing = true
+        imagePickerController.allowsEditing = true
         
         present(imagePickerController, animated: true, completion: nil)
     }
@@ -121,7 +121,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             
             guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else { return }
             
-            let filename = NSUUID().uuidString
+            let filename = UUID().uuidString
             FIRStorage.storage().reference().child("profile_images").child(filename).put(uploadData, metadata: nil, completion: { (metadata, err) in
                 
                 if let err = err {
