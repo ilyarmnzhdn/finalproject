@@ -15,10 +15,20 @@ class UserProfileController: UICollectionViewController {
         
         collectionView?.backgroundColor = .white
         
-//        navigationItem.title = "User Profile"
+        navigationItem.title = "User Profile"
         
         fetchUser()
+        
+        collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
+        
+        return header
+    }
+    
+    
     
     fileprivate func fetchUser(){
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
@@ -33,5 +43,12 @@ class UserProfileController: UICollectionViewController {
         }) { (err) in
             print("Failed to fetch user:", err.localizedDescription)
         }
+    }
+}
+
+extension UserProfileController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 200)
     }
 }
