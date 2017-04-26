@@ -11,29 +11,95 @@ import Firebase
 
 class UserProfileHeader: UICollectionViewCell {
     
-    let profileImageView: UIImageView = {
+    var user: User? {
+        didSet {
+            setupProfileImage()
+            
+            usernameLabel.text = user?.username
+        }
+    }
+    
+    lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .black
         return iv
     }()
     
-    let gridButton: UIButton = {
+    lazy var gridButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
         return button
     }()
     
-    let listButton: UIButton = {
+    lazy var listButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
     
-    let bookmarkButton: UIButton = {
+    lazy var bookmarkButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
+        return button
+    }()
+    
+    lazy var usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "username"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    lazy var itemsLabel: UILabel = {
+        let label = UILabel()
+        
+        let attributedText = NSMutableAttributedString(string: "17\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "items", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        label.attributedText = attributedText
+        
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    lazy var lendLabel: UILabel = {
+        let label = UILabel()
+        
+        let attributedText = NSMutableAttributedString(string: "5\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "lend", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        label.attributedText = attributedText
+        
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    lazy var borrowLabel: UILabel = {
+        let label = UILabel()
+        
+        let attributedText = NSMutableAttributedString(string: "12\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: "borrow", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        label.attributedText = attributedText
+        
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    lazy var editProfileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Edit profile", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 4
+        
         return button
     }()
     
@@ -45,24 +111,49 @@ class UserProfileHeader: UICollectionViewCell {
         profileImageView.layer.cornerRadius = 80/2
         profileImageView.clipsToBounds = true
         
-        setupBottonToolbar()
+        setupBottomToolbar()
         
+        addSubview(usernameLabel)
+        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: self.leftAnchor, bottom: gridButton.topAnchor, right: self.rightAnchor, paddingTop: 4, paddingLeft: 16, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        
+        setupUserStatsView()
+        
+        addSubview(editProfileButton)
+        editProfileButton.anchor(top: itemsLabel.bottomAnchor, left: itemsLabel.leftAnchor, bottom: nil, right: borrowLabel.rightAnchor, paddingTop: 2, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 34)
     }
     
-    fileprivate func setupBottonToolbar(){
+    fileprivate func setupUserStatsView() {
+        let stackView = UIStackView(arrangedSubviews: [itemsLabel, lendLabel, borrowLabel])
+        
+        stackView.distribution = .fillEqually
+        addSubview(stackView)
+        
+        stackView.anchor(top: self.topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
+    }
+    
+    fileprivate func setupBottomToolbar() {
+        
+        let topDividerView = UIView()
+        topDividerView.backgroundColor = UIColor.lightGray
+        
+        let bottomDividerView = UIView()
+        bottomDividerView.backgroundColor = UIColor.lightGray
+        
         let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarkButton])
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         
         addSubview(stackView)
+        addSubview(topDividerView)
+        addSubview(bottomDividerView)
+        
         stackView.anchor(top: nil, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
-    }
-    
-    var user: User? {
-        didSet {
-            setupProfileImage()
-        }
+        
+        topDividerView.anchor(top: stackView.topAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
+        bottomDividerView.anchor(top: stackView.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
     }
     
     fileprivate func setupProfileImage() {
