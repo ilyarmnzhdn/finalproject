@@ -17,6 +17,7 @@
 		1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD211EAF625C0021E50E /* MainTabBarController.swift */; };
 		1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD231EAF631C0021E50E /* UserProfileController.swift */; };
 		1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD271EAF6E910021E50E /* UserProfileHeader.swift */; };
+		18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F69A301EB1FFD50070BE3C /* LoginController.swift */; };
 		240BBB1AADA95F679D9EB79A /* Pods_finalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3EA2178C399348155D0DB8 /* Pods_finalProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		1862FD211EAF625C0021E50E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1862FD231EAF631C0021E50E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		1862FD271EAF6E910021E50E /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		18F69A301EB1FFD50070BE3C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1DAC15E170BFBED3588A3B7F /* Pods-finalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.release.xcconfig"; sourceTree = "<group>"; };
 		419E3208DC36C282CD676C42 /* Pods-finalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		4F3EA2178C399348155D0DB8 /* Pods_finalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 		184253431EADBBDE00CCB09E /* finalProject */ = {
 			isa = PBXGroup;
 			children = (
+				18F69A2F1EB1FFC20070BE3C /* Login */,
 				1862FD251EAF6E710021E50E /* UserProfile */,
 				184253581EADCF2F00CCB09E /* Utils */,
 				184253441EADBBDE00CCB09E /* AppDelegate.swift */,
@@ -117,6 +120,14 @@
 				1862FD271EAF6E910021E50E /* UserProfileHeader.swift */,
 			);
 			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		18F69A2F1EB1FFC20070BE3C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18F69A301EB1FFD50070BE3C /* LoginController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +261,7 @@
 				1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */,
 				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
 				184253571EADC55300CCB09E /* Extensions.swift in Sources */,
+				18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
