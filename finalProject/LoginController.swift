@@ -18,11 +18,14 @@ class LoginController: UIViewController {
     }()
     
     func handleShowSignUp() {
-        
+        let signUpController = SignUpController()
+        navigationController?.pushViewController(signUpController, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.isNavigationBarHidden = true
         
         view.backgroundColor = .white
         view.addSubview(signUpButton)
