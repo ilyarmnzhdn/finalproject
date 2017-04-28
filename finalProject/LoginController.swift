@@ -63,7 +63,7 @@ class LoginController: UIViewController {
         return button
     }()
     
-    lazy var signUpButton: UIButton = {
+    lazy var dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         
         let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray])
@@ -71,7 +71,6 @@ class LoginController: UIViewController {
         attributedTitle.append(NSMutableAttributedString(string: "Sign Up", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 17, green: 154, blue: 237)]))
         
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.setTitle("Don't have an account? Sign Up.", for: .normal)
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
@@ -94,8 +93,8 @@ class LoginController: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         
-        view.addSubview(signUpButton)
-        signUpButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         setupInputFields()
     }
