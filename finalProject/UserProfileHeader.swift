@@ -21,7 +21,6 @@ class UserProfileHeader: UICollectionViewCell {
     
     lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .black
         return iv
     }()
     
@@ -68,7 +67,7 @@ class UserProfileHeader: UICollectionViewCell {
     lazy var lendLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "5\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: "lend", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         
@@ -81,7 +80,7 @@ class UserProfileHeader: UICollectionViewCell {
     lazy var borrowLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "12\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: "borrow", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         
@@ -159,6 +158,7 @@ class UserProfileHeader: UICollectionViewCell {
     fileprivate func setupProfileImage() {
         
         guard let profileImageUrl = user?.profileImageUrl else { return }
+        
         guard let url = URL(string: profileImageUrl) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in

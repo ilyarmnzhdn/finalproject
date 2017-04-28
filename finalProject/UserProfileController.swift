@@ -16,9 +16,9 @@ class UserProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)
         
-        navigationItem.title = "User Profile"
+        navigationItem.title = FIRAuth.auth()?.currentUser?.uid
         
         fetchUser()
         
@@ -42,6 +42,10 @@ class UserProfileController: UICollectionViewController {
                 try FIRAuth.auth()?.signOut()
                 
                 // I need to present log in controller
+                let loginController = LoginController()
+                let navController = UINavigationController(rootViewController: loginController)
+                self.present(navController, animated: true, completion: nil)
+                
             } catch let signOutErr {
                 print("Failed to Sign Out:", signOutErr.localizedDescription)
             }
@@ -53,6 +57,8 @@ class UserProfileController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
+        
+        header.user = self.user
         
         return header
     }
@@ -70,6 +76,7 @@ class UserProfileController: UICollectionViewController {
     
     fileprivate func fetchUser(){
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        
         FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             print(snapshot.value ?? "")
             
@@ -77,6 +84,7 @@ class UserProfileController: UICollectionViewController {
             
             self.user = User(dictionary: dictionary)
             self.navigationItem.title = self.user?.username
+            
             self.collectionView?.reloadData()
             
         }) { (err) in

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class MainTabBarController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,10 +22,17 @@ class MainTabBarController: UITabBarController {
                 let navController = UINavigationController(rootViewController: loginController)
                 self.present(navController, animated: true, completion: nil)
             }
+            
+            return
         }
         
+        setupViewControllers()
+    }
+    
+    func setupViewControllers() {
         let layot = UICollectionViewFlowLayout()
         let userProfileController = UserProfileController(collectionViewLayout: layot)
+        
         let navController = UINavigationController(rootViewController: userProfileController)
         
         navController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
