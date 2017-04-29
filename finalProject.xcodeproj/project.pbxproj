@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1833E20D1EB48A42008570CD /* MainTabBarController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extention.swift */; };
+		1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */; };
 		1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */; };
+		1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */; };
 		184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253441EADBBDE00CCB09E /* AppDelegate.swift */; };
 		184253471EADBBDE00CCB09E /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253461EADBBDE00CCB09E /* SignUpController.swift */; };
 		1842534A1EADBBDE00CCB09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184253481EADBBDE00CCB09E /* Main.storyboard */; };
@@ -24,8 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1833E20C1EB48A42008570CD /* MainTabBarController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extention.swift"; sourceTree = "<group>"; };
+		1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extension.swift"; sourceTree = "<group>"; };
 		1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelecterController.swift; sourceTree = "<group>"; };
+		1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorController+Extension.swift"; sourceTree = "<group>"; };
 		184253411EADBBDE00CCB09E /* finalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184253441EADBBDE00CCB09E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184253461EADBBDE00CCB09E /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */,
+				1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */,
 			);
 			name = AddItem;
 			sourceTree = "<group>";
@@ -108,7 +111,7 @@
 				1862FD251EAF6E710021E50E /* UserProfile */,
 				184253441EADBBDE00CCB09E /* AppDelegate.swift */,
 				1862FD211EAF625C0021E50E /* MainTabBarController.swift */,
-				1833E20C1EB48A42008570CD /* MainTabBarController+Extention.swift */,
+				1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */,
 				184253481EADBBDE00CCB09E /* Main.storyboard */,
 				1842534D1EADBBDE00CCB09E /* LaunchScreen.storyboard */,
 				1842534B1EADBBDE00CCB09E /* Assets.xcassets */,
@@ -269,13 +272,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */,
 				184253471EADBBDE00CCB09E /* SignUpController.swift in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
 				1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */,
 				1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */,
 				1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */,
 				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
-				1833E20D1EB48A42008570CD /* MainTabBarController+Extention.swift in Sources */,
+				1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */,
 				184253571EADC55300CCB09E /* Extensions.swift in Sources */,
 				18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */,
 			);

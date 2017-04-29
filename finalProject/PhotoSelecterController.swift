@@ -9,12 +9,19 @@
 import UIKit
 
 class PhotoSelectorController: UICollectionViewController {
+    
+    let cellId = "cellId"
+    let headerId = "headerId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = .purple
         
         setupNavigationButtons()
+        
+        collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     // Hide status bar
@@ -37,3 +44,4 @@ class PhotoSelectorController: UICollectionViewController {
         print("Next pressed: ")
     }
 }
+
