@@ -14,6 +14,8 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
+        
         if FIRAuth.auth()?.currentUser == nil {
             // Show if not logged in
             //DispatchQueue tells wait until MainTabBarController is inside of UI and then we present it.
