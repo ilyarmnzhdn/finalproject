@@ -29,7 +29,25 @@ class UserProfileController: UICollectionViewController {
         
         setupLogOutButton()
         
-        fetchPosts()
+        //fetchPosts()
+        fetchOrderedPosts()
+    }
+    
+    fileprivate func fetchOrderedPosts() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        let ref = FIRDatabase.database().reference().child("posts").child(uid)
+        //perhaps later on we'll implement some pagination of data
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let post = Post(dictionary: dictionary)
+            //self.posts.append(post)
+            self.posts.insert(post, at: 0)
+            
+            self.collectionView?.reloadData()
+        }) { (err) in
+                print("Failed to fetch ordered posts:", err.localizedDescription)
+        }
     }
     
     fileprivate func fetchPosts() {
@@ -42,7 +60,7 @@ class UserProfileController: UICollectionViewController {
                 print("Key \(key), Value: \(value)")
                 
                 guard let dictionary = value as? [String: Any] else { return }
-                let imageUrl = dictionary["ImageUrl"] as? String
+                
                 let post = Post(dictionary: dictionary)
                 self.posts.append(post)
             })
