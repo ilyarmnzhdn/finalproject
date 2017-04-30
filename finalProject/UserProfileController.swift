@@ -12,6 +12,7 @@ import Firebase
 class UserProfileController: UICollectionViewController {
     
     let cellId = "cellId"
+    var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class UserProfileController: UICollectionViewController {
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogOutButton()
         
@@ -43,8 +44,10 @@ class UserProfileController: UICollectionViewController {
                 guard let dictionary = value as? [String: Any] else { return }
                 let imageUrl = dictionary["ImageUrl"] as? String
                 let post = Post(dictionary: dictionary)
-                print(post.imageUrl)
+                self.posts.append(post)
             })
+            
+            self.collectionView?.reloadData()
             
         }) { (err) in
             print("Fail to fetch post", err.localizedDescription)
@@ -88,9 +91,9 @@ class UserProfileController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
         
-        cell.backgroundColor = .yellow
+        cell.post = posts[indexPath.item]
         
         return cell
     }
@@ -133,7 +136,7 @@ extension UserProfileController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return posts.count
     }
     
     // I use this function to show 3 items per line in grid mode
