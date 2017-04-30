@@ -26,6 +26,7 @@
 		18D577331EB5DF83006C6479 /* ShareItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D577321EB5DF83006C6479 /* ShareItemController.swift */; };
 		18D577361EB5F6CB006C6479 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D577351EB5F6CB006C6479 /* Post.swift */; };
 		18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D577371EB5F8F8006C6479 /* UserProfilePhotoCell.swift */; };
+		18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D577391EB5FEEF006C6479 /* CustomImageView.swift */; };
 		18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F69A301EB1FFD50070BE3C /* LoginController.swift */; };
 		240BBB1AADA95F679D9EB79A /* Pods_finalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3EA2178C399348155D0DB8 /* Pods_finalProject.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		18D577321EB5DF83006C6479 /* ShareItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareItemController.swift; sourceTree = "<group>"; };
 		18D577351EB5F6CB006C6479 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		18D577371EB5F8F8006C6479 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
+		18D577391EB5FEEF006C6479 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		18F69A301EB1FFD50070BE3C /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1DAC15E170BFBED3588A3B7F /* Pods-finalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.release.xcconfig"; sourceTree = "<group>"; };
 		419E3208DC36C282CD676C42 /* Pods-finalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				184253561EADC55300CCB09E /* Extensions.swift */,
 				18D5772E1EB5D27A006C6479 /* Constants.swift */,
+				18D577391EB5FEEF006C6479 /* CustomImageView.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				184253571EADC55300CCB09E /* Extensions.swift in Sources */,
 				18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */,
 				18D5772F1EB5D27A006C6479 /* Constants.swift in Sources */,
+				18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */,
 				18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
