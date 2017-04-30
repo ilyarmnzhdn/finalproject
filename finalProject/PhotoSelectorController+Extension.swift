@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 extension PhotoSelectorController : UICollectionViewDelegateFlowLayout {
     
@@ -54,6 +55,20 @@ extension PhotoSelectorController : UICollectionViewDelegateFlowLayout {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
         
         header.photoImageView.image = selectedImage
+        
+        if let selectedImage = selectedImage {
+            if let index = self.images.index(of: selectedImage) {
+                let selectedAsset = self.assets[index]
+                
+                let imageManager = PHImageManager.default()
+                let targetSize = CGSize(width: 600, height: 600)
+                imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil, resultHandler: { (image, info) in
+                    
+                    header.photoImageView.image = image
+                })
+            }
+        }
+        
         
         return header
     }

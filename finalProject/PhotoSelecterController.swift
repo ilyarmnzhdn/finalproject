@@ -16,6 +16,7 @@ class PhotoSelectorController: UICollectionViewController {
     
     var images = [UIImage]()
     var selectedImage: UIImage?
+    var assets = [PHAsset]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,39 +33,48 @@ class PhotoSelectorController: UICollectionViewController {
         fetchPhotos()
     }
     
-    fileprivate func fetchPhotos() {
+    fileprivate func assetsFetchOptions() -> PHFetchOptions {
         
         let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 10
+        fetchOptions.fetchLimit = 15
         //fetch new images
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchOptions.sortDescriptors = [sortDescriptor]
+        return fetchOptions
+    }
+    
+    fileprivate func fetchPhotos() {
         
-        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-        allPhotos.enumerateObjects({ (asset, count, stop) in
-            print(asset)
-            
-            let imageManager = PHImageManager.default()
-            let targetSize = CGSize(width: 350, height: 350)
-            let options = PHImageRequestOptions()
-            options.isSynchronous = true
-            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
+        let allPhotos = PHAsset.fetchAssets(with: .image, options: assetsFetchOptions())
+        
+        DispatchQueue.global(qos: .background).async {
+            allPhotos.enumerateObjects({ (asset, count, stop) in
+                print(asset)
                 
-                if let image = image {
-                    self.images.append(image)
+                let imageManager = PHImageManager.default()
+                let targetSize = CGSize(width: 200, height: 200)
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
+                imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
                     
-                    // Show first image in header cell
-                    if self.selectedImage == nil {
-                        self.selectedImage = image
+                    if let image = image {
+                        self.images.append(image)
+                        self.assets.append(asset)
+                        
+                        // Show first image in header cell
+                        if self.selectedImage == nil {
+                            self.selectedImage = image
+                        }
                     }
-                }
-                
-                if count == allPhotos.count - 1 {
-                    self.collectionView?.reloadData()
-                }
+                    
+                    if count == allPhotos.count - 1 {
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadData()
+                        }
+                    }
+                })
             })
-        })
-        
+        }
     }
     
     // Hide status bar

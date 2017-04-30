@@ -12,8 +12,9 @@ class PhotoSelectorHeader: UICollectionViewCell {
     
     lazy var photoImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
+        
         iv.backgroundColor = .cyan
         return iv
     }()
