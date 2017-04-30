@@ -14,22 +14,23 @@ class PhotoSelectorController: UICollectionViewController {
     let cellId = "cellId"
     let headerId = "headerId"
     
+    var images = [UIImage]()
+    var selectedImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = .purple
+        collectionView?.backgroundColor = backgroundColor
         
         setupNavigationButtons()
         
-        collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
         
         //fetch photos
         
         fetchPhotos()
     }
-    
-    var images = [UIImage]()
     
     fileprivate func fetchPhotos() {
         
@@ -51,6 +52,11 @@ class PhotoSelectorController: UICollectionViewController {
                 
                 if let image = image {
                     self.images.append(image)
+                    
+                    // Show first image in header cell
+                    if self.selectedImage == nil {
+                        self.selectedImage = image
+                    }
                 }
                 
                 if count == allPhotos.count - 1 {

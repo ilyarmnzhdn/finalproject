@@ -175,7 +175,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)
+        self.view.backgroundColor = backgroundColor
         
         view.addSubview(alreadyHaveAccountButton)
         view.addSubview(plusPhotoButton)

@@ -10,6 +10,13 @@ import UIKit
 
 extension PhotoSelectorController : UICollectionViewDelegateFlowLayout {
     
+    // For showing selected image in the top of view
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedImage = images[indexPath.item]
+        self.collectionView?.reloadData()
+    }
+    
     // cell configuration
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -43,8 +50,10 @@ extension PhotoSelectorController : UICollectionViewDelegateFlowLayout {
     
     // Header cell
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
-        header.backgroundColor = .red
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
+        
+        header.photoImageView.image = selectedImage
         
         return header
     }

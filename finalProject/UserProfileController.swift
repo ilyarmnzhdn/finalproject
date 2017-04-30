@@ -16,7 +16,7 @@ class UserProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)
+        collectionView?.backgroundColor = backgroundColor
         
         navigationItem.title = FIRAuth.auth()?.currentUser?.uid
         
