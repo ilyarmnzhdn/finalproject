@@ -35,7 +35,17 @@ class UserProfileController: UICollectionViewController {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         let ref = FIRDatabase.database().reference().child("posts").child(uid)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value)
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach({ (key, value) in
+                print("Key \(key), Value: \(value)")
+                
+                guard let dictionary = value as? [String: Any] else { return }
+                let imageUrl = dictionary["ImageUrl"] as? String
+                let post = Post(dictionary: dictionary)
+                print(post.imageUrl)
+            })
+            
         }) { (err) in
             print("Fail to fetch post", err.localizedDescription)
         }
