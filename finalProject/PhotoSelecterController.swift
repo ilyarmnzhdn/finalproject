@@ -18,11 +18,12 @@ class PhotoSelectorController: UICollectionViewController {
     var selectedImage: UIImage?
     var assets = [PHAsset]()
     
+    var header: PhotoSelectorHeader?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = backgroundColor
-        
+        collectionView?.backgroundColor = appBackgroundColor        
         setupNavigationButtons()
         
         collectionView?.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
@@ -36,7 +37,7 @@ class PhotoSelectorController: UICollectionViewController {
     fileprivate func assetsFetchOptions() -> PHFetchOptions {
         
         let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 15
+        fetchOptions.fetchLimit = 30
         //fetch new images
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchOptions.sortDescriptors = [sortDescriptor]
@@ -94,7 +95,10 @@ class PhotoSelectorController: UICollectionViewController {
     }
     
     func handleNext() {
-        print("Next pressed: ")
+        let shareItemController = ShareItemController()
+        shareItemController.selectedImage = header?.photoImageView.image
+        navigationController?.pushViewController(shareItemController, animated: true)
     }
+    
 }
 

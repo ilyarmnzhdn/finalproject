@@ -8,4 +8,4 @@
 
 import UIKit
 
-let backgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)
+let appBackgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)

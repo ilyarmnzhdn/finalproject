@@ -9,13 +9,17 @@
 import UIKit
 import Photos
 
-extension PhotoSelectorController : UICollectionViewDelegateFlowLayout {
+extension PhotoSelectorController: UICollectionViewDelegateFlowLayout {
+    
     
     // For showing selected image in the top of view
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedImage = images[indexPath.item]
         self.collectionView?.reloadData()
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
     // cell configuration
@@ -53,6 +57,8 @@ extension PhotoSelectorController : UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
+        
+        self.header = header
         
         header.photoImageView.image = selectedImage
         
