@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class PhotoSelectorController: UICollectionViewController {
     
@@ -21,7 +22,43 @@ class PhotoSelectorController: UICollectionViewController {
         setupNavigationButtons()
         
         collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
+        
+        //fetch photos
+        
+        fetchPhotos()
+    }
+    
+    var images = [UIImage]()
+    
+    fileprivate func fetchPhotos() {
+        
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.fetchLimit = 10
+        //fetch new images
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchOptions.sortDescriptors = [sortDescriptor]
+        
+        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        allPhotos.enumerateObjects({ (asset, count, stop) in
+            print(asset)
+            
+            let imageManager = PHImageManager.default()
+            let targetSize = CGSize(width: 350, height: 350)
+            let options = PHImageRequestOptions()
+            options.isSynchronous = true
+            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
+                
+                if let image = image {
+                    self.images.append(image)
+                }
+                
+                if count == allPhotos.count - 1 {
+                    self.collectionView?.reloadData()
+                }
+            })
+        })
+        
     }
     
     // Hide status bar
