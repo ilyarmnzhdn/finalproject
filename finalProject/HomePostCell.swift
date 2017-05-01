@@ -20,7 +20,6 @@ class HomePostCell: UICollectionViewCell {
     
     lazy var photoImageView: CustomImageView = {
         let iv = CustomImageView()
-        iv.backgroundColor = .purple
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
