@@ -18,5 +18,11 @@ class HomeController: UICollectionViewController {
         collectionView?.backgroundColor = appBackgroundColor
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
+        
+        setupNavigationItem()
+    }
+    
+    func setupNavigationItem() {
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "lendify-logo2"))
     }
 }
