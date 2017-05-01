@@ -11,6 +11,8 @@
 		1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50F1EB711EF00A03067 /* HomeController+extention.swift */; };
 		1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5111EB712D200A03067 /* HomePostCell.swift */; };
 		1818B5141EB73D8800A03067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5131EB73D8800A03067 /* User.swift */; };
+		1818B5161EB753E100A03067 /* UserProfileController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5151EB753E100A03067 /* UserProfileController+Extention.swift */; };
+		1818B5181EB7545600A03067 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5171EB7545600A03067 /* FirebaseUtils.swift */; };
 		1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */; };
 		1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */; };
 		1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */; };
@@ -40,6 +42,8 @@
 		1818B50F1EB711EF00A03067 /* HomeController+extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeController+extention.swift"; sourceTree = "<group>"; };
 		1818B5111EB712D200A03067 /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		1818B5131EB73D8800A03067 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1818B5151EB753E100A03067 /* UserProfileController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileController+Extention.swift"; sourceTree = "<group>"; };
+		1818B5171EB7545600A03067 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extension.swift"; sourceTree = "<group>"; };
 		1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelecterController.swift; sourceTree = "<group>"; };
 		1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorController+Extension.swift"; sourceTree = "<group>"; };
@@ -146,7 +150,6 @@
 				1833E20E1EB48B9B008570CD /* AddItem */,
 				18F69A2F1EB1FFC20070BE3C /* Login */,
 				1862FD251EAF6E710021E50E /* UserProfile */,
-				184253441EADBBDE00CCB09E /* AppDelegate.swift */,
 				1862FD211EAF625C0021E50E /* MainTabBarController.swift */,
 				1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */,
 				184253481EADBBDE00CCB09E /* Main.storyboard */,
@@ -161,6 +164,8 @@
 		184253581EADCF2F00CCB09E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				184253441EADBBDE00CCB09E /* AppDelegate.swift */,
+				1818B5171EB7545600A03067 /* FirebaseUtils.swift */,
 				184253561EADC55300CCB09E /* Extensions.swift */,
 				18D5772E1EB5D27A006C6479 /* Constants.swift */,
 				18D577391EB5FEEF006C6479 /* CustomImageView.swift */,
@@ -172,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				1862FD231EAF631C0021E50E /* UserProfileController.swift */,
+				1818B5151EB753E100A03067 /* UserProfileController+Extention.swift */,
 				1862FD271EAF6E910021E50E /* UserProfileHeader.swift */,
 				18D577371EB5F8F8006C6479 /* UserProfilePhotoCell.swift */,
 			);
@@ -329,7 +335,9 @@
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
 				1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */,
 				1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */,
+				1818B5181EB7545600A03067 /* FirebaseUtils.swift in Sources */,
 				1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */,
+				1818B5161EB753E100A03067 /* UserProfileController+Extention.swift in Sources */,
 				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
 				18D577361EB5F6CB006C6479 /* Post.swift in Sources */,
 				1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */,

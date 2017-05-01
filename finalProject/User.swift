@@ -6,13 +6,15 @@
 //  Copyright © 2017 Ilyar Mnazhdin. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct User {
+    let uid: String
     let username: String
     let profileImageUrl: String
     
-    init(dictionary: [String: Any]) {
+    init(uid: String,dictionary: [String: Any]) {
+        self.uid = uid
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? "" // Double question mark is a default value.
     }

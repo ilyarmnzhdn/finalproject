@@ -41,8 +41,7 @@ class UserProfileController: UICollectionViewController {
             
             guard let user = self.user else { return }
             let post = Post(user: user, dictionary: dictionary)
-            self.posts.append(post)
-            //self.posts.insert(post, at: 0)
+            self.posts.insert(post, at: 0)
             
             self.collectionView?.reloadData()
         }) { (err) in
@@ -81,64 +80,11 @@ class UserProfileController: UICollectionViewController {
     fileprivate func fetchUser(){
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value ?? "")
-            
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-            self.user = User(dictionary: dictionary)
+        FIRDatabase.fetchUserWithUID(uid: uid) { (user) in
+            self.user = user
             self.navigationItem.title = self.user?.username
-            
             self.collectionView?.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch user:", err.localizedDescription)
         }
     }
 }
 
-extension UserProfileController: UICollectionViewDelegateFlowLayout {
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
-        
-        header.user = self.user
-        
-        return header
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
-        
-        cell.post = posts[indexPath.item]
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
-    // I use this function to show 3 items per line in grid mode
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2) / 3
-        
-        return CGSize(width: width, height: width)
-    }
-    
-    // Horizontally 1px between items
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-    
-    // Vertically 1px between items
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-    
-}
