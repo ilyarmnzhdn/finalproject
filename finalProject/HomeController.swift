@@ -9,9 +9,14 @@
 import UIKit
 
 class HomeController: UICollectionViewController {
+    
+    let cellId = "cellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = appBackgroundColor
+        
+        collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
     }
 }
