@@ -10,6 +10,7 @@
 		1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50D1EB710FF00A03067 /* HomeController.swift */; };
 		1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50F1EB711EF00A03067 /* HomeController+extention.swift */; };
 		1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5111EB712D200A03067 /* HomePostCell.swift */; };
+		1818B5141EB73D8800A03067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5131EB73D8800A03067 /* User.swift */; };
 		1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */; };
 		1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */; };
 		1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */; };
@@ -38,6 +39,7 @@
 		1818B50D1EB710FF00A03067 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		1818B50F1EB711EF00A03067 /* HomeController+extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeController+extention.swift"; sourceTree = "<group>"; };
 		1818B5111EB712D200A03067 /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
+		1818B5131EB73D8800A03067 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extension.swift"; sourceTree = "<group>"; };
 		1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelecterController.swift; sourceTree = "<group>"; };
 		1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorController+Extension.swift"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				18D577351EB5F6CB006C6479 /* Post.swift */,
+				1818B5131EB73D8800A03067 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */,
 				1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */,
 				18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */,
+				1818B5141EB73D8800A03067 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
