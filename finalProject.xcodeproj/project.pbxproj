@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50D1EB710FF00A03067 /* HomeController.swift */; };
 		1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */; };
 		1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */; };
 		1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1818B50D1EB710FF00A03067 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extension.swift"; sourceTree = "<group>"; };
 		1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelecterController.swift; sourceTree = "<group>"; };
 		1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorController+Extension.swift"; sourceTree = "<group>"; };
@@ -89,6 +91,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1818B50C1EB710F200A03067 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1818B50D1EB710FF00A03067 /* HomeController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		1833E20E1EB48B9B008570CD /* AddItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		184253431EADBBDE00CCB09E /* finalProject */ = {
 			isa = PBXGroup;
 			children = (
+				1818B50C1EB710F200A03067 /* Home */,
 				184253581EADCF2F00CCB09E /* Utils */,
 				18D577341EB5F6AC006C6479 /* Models */,
 				1833E20E1EB48B9B008570CD /* AddItem */,
@@ -315,6 +326,7 @@
 				18D577311EB5D46C006C6479 /* PhotoSelectorHeader.swift in Sources */,
 				184253571EADC55300CCB09E /* Extensions.swift in Sources */,
 				18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */,
+				1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */,
 				18D5772F1EB5D27A006C6479 /* Constants.swift in Sources */,
 				18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */,
 				18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */,
