@@ -10,8 +10,16 @@ import UIKit
 
 class HomePostCell: UICollectionViewCell {
     
-    lazy var photoImageView: UIImageView = {
-        let iv = UIImageView()
+    var post: Post? {
+        didSet {
+            print(post?.imageUrl ?? "")
+            guard let imageUrl = post?.imageUrl else { return }
+            photoImageView.loadImage(urlString: imageUrl)
+        }
+    }
+    
+    lazy var photoImageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.backgroundColor = .purple
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
