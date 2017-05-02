@@ -28,6 +28,7 @@ class UserSearchController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = appBackgroundColor
+        collectionView?.keyboardDismissMode = .onDrag
         
         navigationController?.navigationBar.addSubview(searchBar)
         
@@ -43,14 +44,26 @@ class UserSearchController: UICollectionViewController {
         fetchUsers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.isHidden = false
+    }
+    
     fileprivate func fetchUsers() {
         print("Fetching users..")
         
         let ref = FIRDatabase.database().reference().child("users")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             
             dictionaries.forEach({ (key, value) in
+                
+                if key == FIRAuth.auth()?.currentUser?.uid {
+                    print("Found myself, omit from list")
+                    return
+                }
+                
                 guard let userDictionary = value as? [String: Any] else { return }
                 
                 let user = User(uid: key, dictionary: userDictionary)
