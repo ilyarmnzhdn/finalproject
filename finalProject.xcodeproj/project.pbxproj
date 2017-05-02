@@ -16,6 +16,9 @@
 		1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */; };
 		1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */; };
 		1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */; };
+		184152551EB88AC300360A4F /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184152541EB88AC300360A4F /* UserSearchController.swift */; };
+		184152571EB8911800360A4F /* UserSearchController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184152561EB8911800360A4F /* UserSearchController+Extention.swift */; };
+		184152591EB891EA00360A4F /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184152581EB891EA00360A4F /* UserSearchCell.swift */; };
 		184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253441EADBBDE00CCB09E /* AppDelegate.swift */; };
 		184253471EADBBDE00CCB09E /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253461EADBBDE00CCB09E /* SignUpController.swift */; };
 		1842534A1EADBBDE00CCB09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184253481EADBBDE00CCB09E /* Main.storyboard */; };
@@ -47,6 +50,9 @@
 		1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extension.swift"; sourceTree = "<group>"; };
 		1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelecterController.swift; sourceTree = "<group>"; };
 		1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorController+Extension.swift"; sourceTree = "<group>"; };
+		184152541EB88AC300360A4F /* UserSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		184152561EB8911800360A4F /* UserSearchController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserSearchController+Extention.swift"; sourceTree = "<group>"; };
+		184152581EB891EA00360A4F /* UserSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		184253411EADBBDE00CCB09E /* finalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184253441EADBBDE00CCB09E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184253461EADBBDE00CCB09E /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -123,6 +129,16 @@
 			name = AddItem;
 			sourceTree = "<group>";
 		};
+		184152531EB88AB600360A4F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				184152541EB88AC300360A4F /* UserSearchController.swift */,
+				184152561EB8911800360A4F /* UserSearchController+Extention.swift */,
+				184152581EB891EA00360A4F /* UserSearchCell.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		184253381EADBBDE00CCB09E = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +160,7 @@
 		184253431EADBBDE00CCB09E /* finalProject */ = {
 			isa = PBXGroup;
 			children = (
+				184152531EB88AB600360A4F /* Search */,
 				1818B50C1EB710F200A03067 /* Home */,
 				184253581EADCF2F00CCB09E /* Utils */,
 				18D577341EB5F6AC006C6479 /* Models */,
@@ -330,8 +347,10 @@
 				18D577331EB5DF83006C6479 /* ShareItemController.swift in Sources */,
 				18D5772D1EB5CF14006C6479 /* PhotoSelectorCell.swift in Sources */,
 				1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */,
+				184152571EB8911800360A4F /* UserSearchController+Extention.swift in Sources */,
 				184253471EADBBDE00CCB09E /* SignUpController.swift in Sources */,
 				1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */,
+				184152591EB891EA00360A4F /* UserSearchCell.swift in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
 				1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */,
 				1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */,
@@ -349,6 +368,7 @@
 				18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */,
 				1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */,
 				18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */,
+				184152551EB88AC300360A4F /* UserSearchController.swift in Sources */,
 				1818B5141EB73D8800A03067 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4325F4YCU;
 				INFOPLIST_FILE = finalProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilyar.finalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -491,6 +512,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4325F4YCU;
 				INFOPLIST_FILE = finalProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilyar.finalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
