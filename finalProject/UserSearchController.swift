@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class UserSearchController: UICollectionViewController {
+    
+    var users = [User]()
     
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
@@ -34,5 +37,24 @@ class UserSearchController: UICollectionViewController {
         collectionView?.register(UserSearchCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.alwaysBounceVertical = true
+        
+        fetchUsers()
+    }
+    
+    fileprivate func fetchUsers() {
+        let ref = FIRDatabase.database().reference().child("users")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String : Any] else { return }
+            dictionaries.forEach({ (key, value) in
+                guard let userDictionary = value as? [String : Any] else { return }
+                let user = User(uid: key, dictionary: userDictionary)
+                self.users.append(user)
+            })
+            
+            self.collectionView?.reloadData()
+            
+        }) { (err) in
+            print("Failed to fetch users for search:", err.localizedDescription)
+        }
     }
 }
