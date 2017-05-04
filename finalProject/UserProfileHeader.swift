@@ -17,6 +17,19 @@ class UserProfileHeader: UICollectionViewCell {
             profileImageView.loadImage(urlString: profileImageUrl)
             
             usernameLabel.text = user?.username
+            
+            setupEditFollowButton()
+        }
+    }
+    
+    fileprivate func setupEditFollowButton() {
+        guard let currentLoggedInUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let userId = user?.uid else { return }
+        
+        if currentLoggedInUser == userId {
+            
+        } else {
+            editProfileFollowButton.setTitle("Follow", for: .normal)
         }
     }
     
@@ -91,7 +104,7 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    lazy var editProfileButton: UIButton = {
+    lazy var editProfileFollowButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Edit profile", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -99,9 +112,29 @@ class UserProfileHeader: UICollectionViewCell {
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 4
+        button.addTarget(self, action: #selector(handleEditProfileOrFollow), for: .touchUpInside)
         
         return button
     }()
+    
+    func handleEditProfileOrFollow(){
+        
+        guard let currentLoggedInUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let userId = user?.uid else { return }
+        
+        let ref = FIRDatabase.database().reference().child("following").child(currentLoggedInUser)
+        
+        let values = [userId: 1]
+        ref.updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("Fail to follow user", err.localizedDescription)
+                return
+            }
+            
+            print("Successfully followed user", self.user?.username ?? "")
+        }
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -118,8 +151,8 @@ class UserProfileHeader: UICollectionViewCell {
         
         setupUserStatsView()
         
-        addSubview(editProfileButton)
-        editProfileButton.anchor(top: itemsLabel.bottomAnchor, left: itemsLabel.leftAnchor, bottom: nil, right: borrowLabel.rightAnchor, paddingTop: 2, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 34)
+        addSubview(editProfileFollowButton)
+        editProfileFollowButton.anchor(top: itemsLabel.bottomAnchor, left: itemsLabel.leftAnchor, bottom: nil, right: borrowLabel.rightAnchor, paddingTop: 2, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 34)
     }
     
     fileprivate func setupUserStatsView() {
