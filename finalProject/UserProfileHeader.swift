@@ -29,7 +29,56 @@ class UserProfileHeader: UICollectionViewCell {
         if currentLoggedInUser == userId {
             
         } else {
-            editProfileFollowButton.setTitle("Follow", for: .normal)
+            // Check if following
+            FIRDatabase.database().reference().child("following").child(currentLoggedInUser).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
+                    self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
+                    self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+                    self.editProfileFollowButton.setTitleColor(.white, for: .normal)
+                    self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+                } else {
+                    self.editProfileFollowButton.setTitle("Follow", for: .normal)
+                    self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+                    self.editProfileFollowButton.setTitleColor(.white, for: .normal)
+                    self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+                }
+                
+            }, withCancel: { (err) in
+                print("Failed to check if following.", err.localizedDescription)
+            })
+            
+        }
+    }
+    
+    func handleEditProfileOrFollow(){
+        
+        guard let currentLoggedInUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let userId = user?.uid else { return }
+        
+        if editProfileFollowButton.titleLabel?.text == "Unfollow" {
+            FIRDatabase.database().reference().child("following").child(currentLoggedInUser).child(userId).removeValue(completionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to unfollow user: ", err.localizedDescription)
+                    return
+                }
+                
+                print("Successfully unfollwed user: ", self.user?.username ?? "")
+            })
+        
+        } else {
+            //Follow logic
+            let ref = FIRDatabase.database().reference().child("following").child(currentLoggedInUser)
+            
+            let values = [userId: 1]
+            ref.updateChildValues(values) { (err, ref) in
+                if let err = err {
+                    print("Fail to follow user", err.localizedDescription)
+                    return
+                }
+                
+                print("Successfully followed user", self.user?.username ?? "")
+            }
         }
     }
     
@@ -116,25 +165,6 @@ class UserProfileHeader: UICollectionViewCell {
         
         return button
     }()
-    
-    func handleEditProfileOrFollow(){
-        
-        guard let currentLoggedInUser = FIRAuth.auth()?.currentUser?.uid else { return }
-        guard let userId = user?.uid else { return }
-        
-        let ref = FIRDatabase.database().reference().child("following").child(currentLoggedInUser)
-        
-        let values = [userId: 1]
-        ref.updateChildValues(values) { (err, ref) in
-            if let err = err {
-                print("Fail to follow user", err.localizedDescription)
-                return
-            }
-            
-            print("Successfully followed user", self.user?.username ?? "")
-        }
-        
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
