@@ -18,8 +18,7 @@ class HomeController: UICollectionViewController {
         super.viewDidLoad()
         
         //Observer for notification
-        let name = NSNotification.Name(rawValue: "UpdateFeed")
-        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: ShareItemController.updateFeedNotificationName, object: nil)
         
         collectionView?.backgroundColor = appBackgroundColor
         
