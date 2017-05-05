@@ -21,10 +21,24 @@ class HomeController: UICollectionViewController {
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
+        
         setupNavigationItem()
         
-        fetchPosts()
+        fetchAllPosts()
+    }
+    
+    func handleRefresh() {
+        posts.removeAll()
         
+        fetchAllPosts()
+    }
+    
+    fileprivate func fetchAllPosts() {
+        
+        fetchPosts()
         fetchFollowingUsersIds()
     }
     
@@ -60,6 +74,8 @@ class HomeController: UICollectionViewController {
     fileprivate func fetchPostsWithUser(user: User) {
         let ref = FIRDatabase.database().reference().child("posts").child(user.uid)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            self.collectionView?.refreshControl?.endRefreshing()
             
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key, value) in
