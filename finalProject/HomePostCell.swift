@@ -37,7 +37,7 @@ class HomePostCell: UICollectionViewCell {
         
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 4)]))
         
-        let timeAgoDisplay = post.creationDate.description
+        let timeAgoDisplay = post.creationDate.timeAgoDisplay()
         attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.gray]))
         
         captionLabel.attributedText = attributedText
