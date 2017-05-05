@@ -17,6 +17,10 @@ class HomeController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Observer for notification
+        let name = NSNotification.Name(rawValue: "UpdateFeed")
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: name, object: nil)
+        
         collectionView?.backgroundColor = appBackgroundColor
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
@@ -28,6 +32,10 @@ class HomeController: UICollectionViewController {
         setupNavigationItem()
         
         fetchAllPosts()
+    }
+    
+    func handleUpdateFeed() {
+        handleRefresh()
     }
     
     func handleRefresh() {
