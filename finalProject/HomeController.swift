@@ -70,6 +70,10 @@ class HomeController: UICollectionViewController {
                 self.posts.append(post)
             })
             
+            self.posts.sort(by: { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+            })
+            
             self.collectionView?.reloadData()
             
         }) { (err) in
