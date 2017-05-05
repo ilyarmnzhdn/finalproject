@@ -24,6 +24,25 @@ class HomeController: UICollectionViewController {
         setupNavigationItem()
         
         fetchPosts()
+        
+        fetchFollowingUsersIds()
+    }
+    
+    fileprivate func fetchFollowingUsersIds() {
+        guard let uid = FIRAuth.currentUid else { return }
+        FIRDatabase.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let usersIdsDictionary = snapshot.value as? [String: Any] else { return }
+            
+            usersIdsDictionary.forEach({ (key, value) in
+                FIRDatabase.fetchUserWithUID(uid: key, completion: { (user) in
+                    self.fetchPostsWithUser(user: user)
+                })
+            })
+            
+        }) { (err) in
+            print("Failed to fetch following user uid's: ", err.localizedDescription)
+        }
     }
     
     func setupNavigationItem() {
@@ -31,7 +50,7 @@ class HomeController: UICollectionViewController {
     }
     
     fileprivate func fetchPosts() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let uid = FIRAuth.currentUid else { return }
         
         FIRDatabase.fetchUserWithUID(uid: uid) { (user) in
             self.fetchPostsWithUser(user: user)

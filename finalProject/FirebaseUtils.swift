@@ -23,3 +23,8 @@ extension FIRDatabase {
     }
 }
 
+extension FIRAuth {
+    static var currentUid: String? {
+        return FIRAuth.auth()?.currentUser?.uid
+    }
+}
