@@ -29,6 +29,8 @@
 		185B93EF1EBDBC15007F8D25 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93EE1EBDBC15007F8D25 /* CameraController.swift */; };
 		185B93F11EBDCBF5007F8D25 /* CameraController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93F01EBDCBF5007F8D25 /* CameraController+Extention.swift */; };
 		185B93F31EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93F21EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift */; };
+		185B93F51EBDE167007F8D25 /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93F41EBDE167007F8D25 /* CustomAnimationPresentor.swift */; };
+		185B93F71EBDE470007F8D25 /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93F61EBDE470007F8D25 /* CustomAnimationDismisser.swift */; };
 		1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD211EAF625C0021E50E /* MainTabBarController.swift */; };
 		1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD231EAF631C0021E50E /* UserProfileController.swift */; };
 		1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD271EAF6E910021E50E /* UserProfileHeader.swift */; };
@@ -68,6 +70,8 @@
 		185B93EE1EBDBC15007F8D25 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		185B93F01EBDCBF5007F8D25 /* CameraController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraController+Extention.swift"; sourceTree = "<group>"; };
 		185B93F21EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
+		185B93F41EBDE167007F8D25 /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		185B93F61EBDE470007F8D25 /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		1862FD211EAF625C0021E50E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1862FD231EAF631C0021E50E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		1862FD271EAF6E910021E50E /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				185B93EE1EBDBC15007F8D25 /* CameraController.swift */,
 				185B93F01EBDCBF5007F8D25 /* CameraController+Extention.swift */,
 				185B93F21EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift */,
+				185B93F41EBDE167007F8D25 /* CustomAnimationPresentor.swift */,
+				185B93F61EBDE470007F8D25 /* CustomAnimationDismisser.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -383,11 +389,13 @@
 				18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */,
 				1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */,
 				18D5772F1EB5D27A006C6479 /* Constants.swift in Sources */,
+				185B93F51EBDE167007F8D25 /* CustomAnimationPresentor.swift in Sources */,
 				18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */,
 				1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */,
 				18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */,
 				184152551EB88AC300360A4F /* UserSearchController.swift in Sources */,
 				185B93F11EBDCBF5007F8D25 /* CameraController+Extention.swift in Sources */,
+				185B93F71EBDE470007F8D25 /* CustomAnimationDismisser.swift in Sources */,
 				1818B5141EB73D8800A03067 /* User.swift in Sources */,
 				185B93F31EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift in Sources */,
 			);

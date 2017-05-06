@@ -37,7 +37,7 @@ class PhotoSelectorController: UICollectionViewController {
     fileprivate func assetsFetchOptions() -> PHFetchOptions {
         
         let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 30
+        fetchOptions.fetchLimit = 100
         //fetch new images
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchOptions.sortDescriptors = [sortDescriptor]

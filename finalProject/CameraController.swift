@@ -46,8 +46,25 @@ class CameraController: UIViewController {
         
         setupCaptureSession()
         
+        transitioningDelegate = self
+        
         setupHUD()
     }
+    
+    // <----->
+    let customAnimationPresentor = CustomAnimationPresentor()
+    let customAnimationDismisser = CustomAnimationDismisser()
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationPresentor
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationDismisser
+    }
+    // <----->
     
     override var prefersStatusBarHidden: Bool {
         return true

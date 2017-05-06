@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-extension CameraController : AVCapturePhotoCaptureDelegate {
+extension CameraController : AVCapturePhotoCaptureDelegate, UIViewControllerTransitioningDelegate {
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         
         guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer!) else { return }
