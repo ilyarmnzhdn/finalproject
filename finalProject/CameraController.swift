@@ -11,6 +11,8 @@ import AVFoundation
 
 class CameraController: UIViewController {
     
+    let output = AVCapturePhotoOutput()
+    
     lazy var dismissButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "right_arrow").withRenderingMode(.alwaysOriginal), for: .normal)
@@ -27,6 +29,13 @@ class CameraController: UIViewController {
     
     func handleCapturePhoto() {
         print("Capturing photo")
+        
+        let settings = AVCapturePhotoSettings()
+        guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
+        
+        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormatType]
+        
+        output.capturePhoto(with: settings, delegate: self)
     }
     
     func handleDismiss() {
@@ -40,13 +49,17 @@ class CameraController: UIViewController {
         setupHUD()
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     fileprivate func setupHUD() {
         view.addSubview(capturePhotoButton)
         capturePhotoButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 88, height: 88)
         capturePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         view.addSubview(dismissButton)
-        dismissButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 60, height: 60)
+        dismissButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 72, height: 64)
     }
     
     fileprivate func setupCaptureSession() {
@@ -64,7 +77,6 @@ class CameraController: UIViewController {
         }
         
         //2. setup outputs
-        let output = AVCapturePhotoOutput()
         if captureSession.canAddOutput(output) {
             captureSession.addOutput(output)
         }

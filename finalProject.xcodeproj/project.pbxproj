@@ -27,6 +27,8 @@
 		184253571EADC55300CCB09E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253561EADC55300CCB09E /* Extensions.swift */; };
 		1842535A1EADD8CB00CCB09E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184253591EADD8CB00CCB09E /* GoogleService-Info.plist */; };
 		185B93EF1EBDBC15007F8D25 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93EE1EBDBC15007F8D25 /* CameraController.swift */; };
+		185B93F11EBDCBF5007F8D25 /* CameraController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93F01EBDCBF5007F8D25 /* CameraController+Extention.swift */; };
+		185B93F31EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93F21EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift */; };
 		1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD211EAF625C0021E50E /* MainTabBarController.swift */; };
 		1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD231EAF631C0021E50E /* UserProfileController.swift */; };
 		1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD271EAF6E910021E50E /* UserProfileHeader.swift */; };
@@ -64,6 +66,8 @@
 		184253561EADC55300CCB09E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		184253591EADD8CB00CCB09E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		185B93EE1EBDBC15007F8D25 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		185B93F01EBDCBF5007F8D25 /* CameraController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CameraController+Extention.swift"; sourceTree = "<group>"; };
+		185B93F21EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
 		1862FD211EAF625C0021E50E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1862FD231EAF631C0021E50E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		1862FD271EAF6E910021E50E /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				185B93EE1EBDBC15007F8D25 /* CameraController.swift */,
+				185B93F01EBDCBF5007F8D25 /* CameraController+Extention.swift */,
+				185B93F21EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -381,7 +387,9 @@
 				1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */,
 				18D577381EB5F8F8006C6479 /* UserProfilePhotoCell.swift in Sources */,
 				184152551EB88AC300360A4F /* UserSearchController.swift in Sources */,
+				185B93F11EBDCBF5007F8D25 /* CameraController+Extention.swift in Sources */,
 				1818B5141EB73D8800A03067 /* User.swift in Sources */,
+				185B93F31EBDD0C1007F8D25 /* PreviewPhotoContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
