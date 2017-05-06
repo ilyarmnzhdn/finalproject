@@ -26,6 +26,7 @@
 		1842534F1EADBBDE00CCB09E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1842534D1EADBBDE00CCB09E /* LaunchScreen.storyboard */; };
 		184253571EADC55300CCB09E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184253561EADC55300CCB09E /* Extensions.swift */; };
 		1842535A1EADD8CB00CCB09E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 184253591EADD8CB00CCB09E /* GoogleService-Info.plist */; };
+		185B93EF1EBDBC15007F8D25 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B93EE1EBDBC15007F8D25 /* CameraController.swift */; };
 		1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD211EAF625C0021E50E /* MainTabBarController.swift */; };
 		1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD231EAF631C0021E50E /* UserProfileController.swift */; };
 		1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD271EAF6E910021E50E /* UserProfileHeader.swift */; };
@@ -62,6 +63,7 @@
 		184253501EADBBDE00CCB09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184253561EADC55300CCB09E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		184253591EADD8CB00CCB09E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		185B93EE1EBDBC15007F8D25 /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		1862FD211EAF625C0021E50E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1862FD231EAF631C0021E50E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		1862FD271EAF6E910021E50E /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		184253431EADBBDE00CCB09E /* finalProject */ = {
 			isa = PBXGroup;
 			children = (
+				185B93ED1EBDBC06007F8D25 /* Camera */,
 				184152531EB88AB600360A4F /* Search */,
 				1818B50C1EB710F200A03067 /* Home */,
 				184253581EADCF2F00CCB09E /* Utils */,
@@ -188,6 +191,14 @@
 				18D577391EB5FEEF006C6479 /* CustomImageView.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		185B93ED1EBDBC06007F8D25 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				185B93EE1EBDBC15007F8D25 /* CameraController.swift */,
+			);
+			name = Camera;
 			sourceTree = "<group>";
 		};
 		1862FD251EAF6E710021E50E /* UserProfile */ = {
@@ -344,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185B93EF1EBDBC15007F8D25 /* CameraController.swift in Sources */,
 				18D577331EB5DF83006C6479 /* ShareItemController.swift in Sources */,
 				18D5772D1EB5CF14006C6479 /* PhotoSelectorCell.swift in Sources */,
 				1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */,
