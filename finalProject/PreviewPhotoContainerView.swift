@@ -19,7 +19,7 @@ class PreviewPhotoContainerView: UIView {
     
     lazy var canselButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "cansel").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "cancel").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
         return button
     }()
@@ -91,7 +91,7 @@ class PreviewPhotoContainerView: UIView {
         addSubview(previewImageView)
         previewImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         addSubview(canselButton)
-        canselButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 12, paddingRight: 0, width: 60, height: 60)
+        canselButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 12, paddingRight: 0, width: 80, height: 80)
         addSubview(saveButton)
         saveButton.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 12, paddingRight: 12, width: 80, height: 80)
     }

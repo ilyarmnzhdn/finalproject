@@ -9,3 +9,5 @@
 import UIKit
 
 let appBackgroundColor = UIColor.rgb(red: 240, green: 250, blue: 251)
+let navBarBackgroudColor = UIColor.rgb(red: 111, green: 208, blue: 243)
+let topBarBackgroundColor = UIColor.rgb(red: 36, green: 173, blue: 222)

@@ -67,9 +67,15 @@ class HomeController: UICollectionViewController {
     }
     
     func setupNavigationItem() {
+        
+        guard let navBar = navigationController?.navigationBar else { return }
+        navBar.tintColor = .white
+        navBar.barTintColor = topBarBackgroundColor
+        navBar.barStyle = .blackOpaque
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
         
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "lendify-logo2"))
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "lendify-logo").withRenderingMode(.alwaysOriginal))
     }
     
     func handleCamera() {

@@ -33,7 +33,8 @@ class UserSearchController: UICollectionViewController {
         navigationController?.navigationBar.addSubview(searchBar)
         
         guard let navBar = navigationController?.navigationBar else { return }
-        navBar.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        navBar.backgroundColor = navBarBackgroudColor
+        navBar.barStyle = .blackOpaque
         
         searchBar.anchor(top: navBar.topAnchor, left: navBar.leftAnchor, bottom: navBar.bottomAnchor, right: navBar.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
         

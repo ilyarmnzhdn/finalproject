@@ -72,7 +72,7 @@ class HomePostCell: UICollectionViewCell {
     
     lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "com_like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     

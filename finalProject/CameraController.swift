@@ -76,7 +76,7 @@ class CameraController: UIViewController {
         capturePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         view.addSubview(dismissButton)
-        dismissButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 72, height: 64)
+        dismissButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 60, height: 60)
     }
     
     fileprivate func setupCaptureSession() {
