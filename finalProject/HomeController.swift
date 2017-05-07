@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class HomeController: UICollectionViewController {
+class HomeController: UICollectionViewController, HomePostCellDelegate {
     
     let cellId = "cellId"
     var posts = [Post]()
@@ -104,7 +104,9 @@ class HomeController: UICollectionViewController {
                 
                 guard let dictionary = value as? [String: Any] else { return }
                 
-                let post = Post(user: user, dictionary: dictionary)
+                var post = Post(user: user, dictionary: dictionary)
+                post.id = key
+                
                 self.posts.append(post)
             })
             
@@ -118,5 +120,12 @@ class HomeController: UICollectionViewController {
             print("Fail to fetch post", err.localizedDescription)
         }
     }
-
+    
+    func didTapComment(post: Post) {
+        print("Message coming from HomeController")
+        print(post.caption)
+        let commentsController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
+        commentsController.post = post
+        navigationController?.pushViewController(commentsController, animated: true)
+    }
 }

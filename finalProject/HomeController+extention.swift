@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension HomeController : UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
+extension HomeController : UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
@@ -35,11 +35,4 @@ extension HomeController : UICollectionViewDelegateFlowLayout, HomePostCellDeleg
         
         return CGSize(width: view.frame.width, height: height)
     }
-    
-    func didTapComment(post: Post) {
-        print("Message coming from HomeController")
-        let commentController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
-        navigationController?.pushViewController(commentController, animated: true)
-    }
-    
 }
