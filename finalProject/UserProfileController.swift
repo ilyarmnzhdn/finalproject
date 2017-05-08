@@ -19,6 +19,11 @@ class UserProfileController: UICollectionViewController {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = appBackgroundColor
+        guard let navBar = navigationController?.navigationBar else { return }
+        navBar.tintColor = .white
+        navBar.barTintColor = topBarBackgroundColor
+        navBar.barStyle = .blackOpaque
+
 
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         
@@ -34,7 +39,7 @@ class UserProfileController: UICollectionViewController {
         guard let uid = self.user?.uid  else { return }
         let ref = FIRDatabase.database().reference().child("posts").child(uid)
         //perhaps later on we'll implement some pagination of data
-        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+        ref.queryOrdered(byChild: "creatingDate").observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
             guard let user = self.user else { return }

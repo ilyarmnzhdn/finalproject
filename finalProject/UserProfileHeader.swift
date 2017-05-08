@@ -27,9 +27,10 @@ class UserProfileHeader: UICollectionViewCell {
         guard let userId = user?.uid else { return }
         
         if currentLoggedInUser == userId {
-            
+            editProfileFollowButton.isEnabled = false
         } else {
             // Check if following
+                
             FIRDatabase.database().reference().child("following").child(currentLoggedInUser).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
@@ -118,7 +119,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "username"
+        //label.text = "username"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()

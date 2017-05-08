@@ -18,7 +18,6 @@ extension MainTabBarController: UITabBarControllerDelegate {
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
             let navController = UINavigationController(rootViewController: photoSelectorController)
             
-            
             present(navController, animated: true, completion: nil)
             
             return false
