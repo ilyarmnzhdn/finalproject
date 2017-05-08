@@ -27,7 +27,7 @@ class ShareItemController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(handleShare))
         
-        setupImageAndTextViews()
+        setupViews()
     }
     
     lazy var imageView: UIImageView = {
@@ -44,7 +44,7 @@ class ShareItemController: UIViewController {
         return tv
     }()
     
-    fileprivate func setupImageAndTextViews() {
+    fileprivate func setupViews() {
         let containerView = UIView()
         containerView.backgroundColor = .white
         

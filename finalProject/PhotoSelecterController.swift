@@ -95,9 +95,12 @@ class PhotoSelectorController: UICollectionViewController {
     }
     
     func handleNext() {
-        let shareItemController = ShareItemController()
-        shareItemController.selectedImage = header?.photoImageView.image
-        navigationController?.pushViewController(shareItemController, animated: true)
+//        let shareItemController = ShareItemController()
+//        shareItemController.selectedImage = header?.photoImageView.image
+//        navigationController?.pushViewController(shareItemController, animated: true)
+        let publishItemController = PublishItemController()
+        publishItemController.selectedImage = header?.photoImageView.image
+        navigationController?.pushViewController(publishItemController, animated: true)
     }
     
 }

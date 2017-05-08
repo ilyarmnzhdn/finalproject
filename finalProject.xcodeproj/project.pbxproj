@@ -34,6 +34,21 @@
 		1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD211EAF625C0021E50E /* MainTabBarController.swift */; };
 		1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD231EAF631C0021E50E /* UserProfileController.swift */; };
 		1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862FD271EAF6E910021E50E /* UserProfileHeader.swift */; };
+		188DB15D1EC04C8800DB888E /* GLCalendarDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DB1491EC04C8800DB888E /* GLCalendarDateRange.m */; };
+		188DB15E1EC04C8800DB888E /* GLCalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DB14C1EC04C8800DB888E /* GLCalendarDayCell.m */; };
+		188DB15F1EC04C8800DB888E /* GLCalendarDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188DB14D1EC04C8800DB888E /* GLCalendarDayCell.xib */; };
+		188DB1601EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DB14F1EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m */; };
+		188DB1611EC04C8800DB888E /* GLCalendarMonthCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DB1511EC04C8800DB888E /* GLCalendarMonthCoverView.m */; };
+		188DB1621EC04C8800DB888E /* GLCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DB1531EC04C8800DB888E /* GLCalendarView.m */; };
+		188DB1631EC04C8800DB888E /* GLCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188DB1541EC04C8800DB888E /* GLCalendarView.xib */; };
+		188DB1641EC04C8800DB888E /* GLDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DB1561EC04C8800DB888E /* GLDateUtils.m */; };
+		188DB1651EC04C8800DB888E /* gl-calendar-magnify-glass.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DB1581EC04C8800DB888E /* gl-calendar-magnify-glass.png */; };
+		188DB1661EC04C8800DB888E /* gl-calendar-magnify-glass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DB1591EC04C8800DB888E /* gl-calendar-magnify-glass@2x.png */; };
+		188DB1671EC04C8800DB888E /* gl-calendar-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DB15A1EC04C8800DB888E /* gl-calendar-shadow.png */; };
+		188DB1681EC04C8800DB888E /* gl-calendar-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DB15B1EC04C8800DB888E /* gl-calendar-shadow@2x.png */; };
+		188DB1691EC04C8800DB888E /* gl-calendar-shadow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DB15C1EC04C8800DB888E /* gl-calendar-shadow@3x.png */; };
+		188DB16D1EC04FEC00DB888E /* PublishItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DB16C1EC04FEC00DB888E /* PublishItemController.swift */; };
+		188DB16F1EC05B2B00DB888E /* TimeframeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DB16E1EC05B2B00DB888E /* TimeframeViewController.swift */; };
 		18D5772D1EB5CF14006C6479 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5772C1EB5CF14006C6479 /* PhotoSelectorCell.swift */; };
 		18D5772F1EB5D27A006C6479 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5772E1EB5D27A006C6479 /* Constants.swift */; };
 		18D577311EB5D46C006C6479 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D577301EB5D46C006C6479 /* PhotoSelectorHeader.swift */; };
@@ -79,6 +94,28 @@
 		1862FD211EAF625C0021E50E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1862FD231EAF631C0021E50E /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		1862FD271EAF6E910021E50E /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		188DB1481EC04C8800DB888E /* GLCalendarDateRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCalendarDateRange.h; sourceTree = "<group>"; };
+		188DB1491EC04C8800DB888E /* GLCalendarDateRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCalendarDateRange.m; sourceTree = "<group>"; };
+		188DB14B1EC04C8800DB888E /* GLCalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCalendarDayCell.h; sourceTree = "<group>"; };
+		188DB14C1EC04C8800DB888E /* GLCalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCalendarDayCell.m; sourceTree = "<group>"; };
+		188DB14D1EC04C8800DB888E /* GLCalendarDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCalendarDayCell.xib; sourceTree = "<group>"; };
+		188DB14E1EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCalendarDayCellBackgroundCover.h; sourceTree = "<group>"; };
+		188DB14F1EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCalendarDayCellBackgroundCover.m; sourceTree = "<group>"; };
+		188DB1501EC04C8800DB888E /* GLCalendarMonthCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCalendarMonthCoverView.h; sourceTree = "<group>"; };
+		188DB1511EC04C8800DB888E /* GLCalendarMonthCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCalendarMonthCoverView.m; sourceTree = "<group>"; };
+		188DB1521EC04C8800DB888E /* GLCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCalendarView.h; sourceTree = "<group>"; };
+		188DB1531EC04C8800DB888E /* GLCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCalendarView.m; sourceTree = "<group>"; };
+		188DB1541EC04C8800DB888E /* GLCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCalendarView.xib; sourceTree = "<group>"; };
+		188DB1551EC04C8800DB888E /* GLDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDateUtils.h; sourceTree = "<group>"; };
+		188DB1561EC04C8800DB888E /* GLDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDateUtils.m; sourceTree = "<group>"; };
+		188DB1581EC04C8800DB888E /* gl-calendar-magnify-glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gl-calendar-magnify-glass.png"; sourceTree = "<group>"; };
+		188DB1591EC04C8800DB888E /* gl-calendar-magnify-glass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gl-calendar-magnify-glass@2x.png"; sourceTree = "<group>"; };
+		188DB15A1EC04C8800DB888E /* gl-calendar-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gl-calendar-shadow.png"; sourceTree = "<group>"; };
+		188DB15B1EC04C8800DB888E /* gl-calendar-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gl-calendar-shadow@2x.png"; sourceTree = "<group>"; };
+		188DB15C1EC04C8800DB888E /* gl-calendar-shadow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gl-calendar-shadow@3x.png"; sourceTree = "<group>"; };
+		188DB16A1EC04DCE00DB888E /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		188DB16C1EC04FEC00DB888E /* PublishItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishItemController.swift; sourceTree = "<group>"; };
+		188DB16E1EC05B2B00DB888E /* TimeframeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeframeViewController.swift; sourceTree = "<group>"; };
 		18D5772C1EB5CF14006C6479 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		18D5772E1EB5D27A006C6479 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18D577301EB5D46C006C6479 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
@@ -146,6 +183,8 @@
 				1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */,
 				18D5772C1EB5CF14006C6479 /* PhotoSelectorCell.swift */,
 				18D577301EB5D46C006C6479 /* PhotoSelectorHeader.swift */,
+				188DB16C1EC04FEC00DB888E /* PublishItemController.swift */,
+				188DB16E1EC05B2B00DB888E /* TimeframeViewController.swift */,
 			);
 			name = AddItem;
 			sourceTree = "<group>";
@@ -181,6 +220,8 @@
 		184253431EADBBDE00CCB09E /* finalProject */ = {
 			isa = PBXGroup;
 			children = (
+				188DB16A1EC04DCE00DB888E /* BridgingHeader.h */,
+				188DB16B1EC04E7D00DB888E /* Helper */,
 				184253581EADCF2F00CCB09E /* Utils */,
 				185B93ED1EBDBC06007F8D25 /* Camera */,
 				184152531EB88AB600360A4F /* Search */,
@@ -233,6 +274,56 @@
 				18D577371EB5F8F8006C6479 /* UserProfilePhotoCell.swift */,
 			);
 			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		188DB1471EC04C8800DB888E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				188DB1481EC04C8800DB888E /* GLCalendarDateRange.h */,
+				188DB1491EC04C8800DB888E /* GLCalendarDateRange.m */,
+				188DB14A1EC04C8800DB888E /* GLCalendarDayCell */,
+				188DB1501EC04C8800DB888E /* GLCalendarMonthCoverView.h */,
+				188DB1511EC04C8800DB888E /* GLCalendarMonthCoverView.m */,
+				188DB1521EC04C8800DB888E /* GLCalendarView.h */,
+				188DB1531EC04C8800DB888E /* GLCalendarView.m */,
+				188DB1541EC04C8800DB888E /* GLCalendarView.xib */,
+				188DB1551EC04C8800DB888E /* GLDateUtils.h */,
+				188DB1561EC04C8800DB888E /* GLDateUtils.m */,
+				188DB1571EC04C8800DB888E /* Images */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		188DB14A1EC04C8800DB888E /* GLCalendarDayCell */ = {
+			isa = PBXGroup;
+			children = (
+				188DB14B1EC04C8800DB888E /* GLCalendarDayCell.h */,
+				188DB14C1EC04C8800DB888E /* GLCalendarDayCell.m */,
+				188DB14D1EC04C8800DB888E /* GLCalendarDayCell.xib */,
+				188DB14E1EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.h */,
+				188DB14F1EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m */,
+			);
+			path = GLCalendarDayCell;
+			sourceTree = "<group>";
+		};
+		188DB1571EC04C8800DB888E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				188DB1581EC04C8800DB888E /* gl-calendar-magnify-glass.png */,
+				188DB1591EC04C8800DB888E /* gl-calendar-magnify-glass@2x.png */,
+				188DB15A1EC04C8800DB888E /* gl-calendar-shadow.png */,
+				188DB15B1EC04C8800DB888E /* gl-calendar-shadow@2x.png */,
+				188DB15C1EC04C8800DB888E /* gl-calendar-shadow@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		188DB16B1EC04E7D00DB888E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				188DB1471EC04C8800DB888E /* Sources */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		18D577341EB5F6AC006C6479 /* Models */ = {
@@ -320,6 +411,13 @@
 				1842534F1EADBBDE00CCB09E /* LaunchScreen.storyboard in Resources */,
 				1842535A1EADD8CB00CCB09E /* GoogleService-Info.plist in Resources */,
 				1842534C1EADBBDE00CCB09E /* Assets.xcassets in Resources */,
+				188DB1631EC04C8800DB888E /* GLCalendarView.xib in Resources */,
+				188DB1691EC04C8800DB888E /* gl-calendar-shadow@3x.png in Resources */,
+				188DB1661EC04C8800DB888E /* gl-calendar-magnify-glass@2x.png in Resources */,
+				188DB1651EC04C8800DB888E /* gl-calendar-magnify-glass.png in Resources */,
+				188DB1671EC04C8800DB888E /* gl-calendar-shadow.png in Resources */,
+				188DB1681EC04C8800DB888E /* gl-calendar-shadow@2x.png in Resources */,
+				188DB15F1EC04C8800DB888E /* GLCalendarDayCell.xib in Resources */,
 				1842534A1EADBBDE00CCB09E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188DB16D1EC04FEC00DB888E /* PublishItemController.swift in Sources */,
 				185B93EF1EBDBC15007F8D25 /* CameraController.swift in Sources */,
 				18D577331EB5DF83006C6479 /* ShareItemController.swift in Sources */,
 				18D5772D1EB5CF14006C6479 /* PhotoSelectorCell.swift in Sources */,
@@ -388,21 +487,28 @@
 				18E809EE1EBF38200097211B /* CommentController+Extention.swift in Sources */,
 				1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */,
 				184152591EB891EA00360A4F /* UserSearchCell.swift in Sources */,
+				188DB1641EC04C8800DB888E /* GLDateUtils.m in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
 				18E809F01EBF3A450097211B /* Comment.swift in Sources */,
+				188DB1601EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m in Sources */,
 				1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */,
+				188DB15D1EC04C8800DB888E /* GLCalendarDateRange.m in Sources */,
 				1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */,
 				1818B5181EB7545600A03067 /* FirebaseUtils.swift in Sources */,
 				1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */,
 				1818B5161EB753E100A03067 /* UserProfileController+Extention.swift in Sources */,
 				18E809EC1EBF37B30097211B /* CommentCell.swift in Sources */,
+				188DB1621EC04C8800DB888E /* GLCalendarView.m in Sources */,
 				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
 				18D577361EB5F6CB006C6479 /* Post.swift in Sources */,
+				188DB1611EC04C8800DB888E /* GLCalendarMonthCoverView.m in Sources */,
 				1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */,
 				18D577311EB5D46C006C6479 /* PhotoSelectorHeader.swift in Sources */,
+				188DB15E1EC04C8800DB888E /* GLCalendarDayCell.m in Sources */,
 				184253571EADC55300CCB09E /* Extensions.swift in Sources */,
 				18F69A311EB1FFD50070BE3C /* LoginController.swift in Sources */,
 				1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */,
+				188DB16F1EC05B2B00DB888E /* TimeframeViewController.swift in Sources */,
 				18D5772F1EB5D27A006C6479 /* Constants.swift in Sources */,
 				185B93F51EBDE167007F8D25 /* CustomAnimationPresentor.swift in Sources */,
 				18D5773A1EB5FEEF006C6479 /* CustomImageView.swift in Sources */,
@@ -545,6 +651,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilyar.finalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = finalProject/BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -560,6 +667,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilyar.finalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = finalProject/BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
