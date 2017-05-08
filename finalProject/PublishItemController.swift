@@ -32,12 +32,12 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     }
     
     func handlePublish() {
-        guard let itemName = itemNameTW.text, itemName.characters.count > 0 else { return }
-        guard let description = itemDescriptionTW.text, description.characters.count > 0 else { return }
+        guard let itemName = itemNameTF.text, itemName.characters.count > 0 else { return }
+        guard let description = itemDescriptionTF.text, description.characters.count > 0 else { return }
         guard let image = selectedImage else { return }
         guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else { return }
-        guard let borrowAt = borrowTW.text, borrowAt.characters.count > 0 else { return }
-        guard let returnAt = returnTW.text, returnAt.characters.count > 0 else { return }
+        guard let borrowAt = borrowTV.text, borrowAt.characters.count > 0 else { return }
+        guard let returnAt = returnTV.text, returnAt.characters.count > 0 else { return }
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         
@@ -58,24 +58,18 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     fileprivate func saveToDataBaseWithImageUrl(imageUrl: String) {
         guard let uid = FIRAuth.currentUid else { return }
         guard let postImage = selectedImage else { return }
-        guard let itemName = itemNameTW.text else { return }
-        guard let description = itemDescriptionTW.text else { return }
-        guard let borrowAt = borrowTW.text else { return }
-        guard let returnAt = returnTW.text else { return }
+        guard let itemName = itemNameTF.text else { return }
+        guard let description = itemDescriptionTF.text else { return }
+        guard let borrowDate = startDate else { return }
+        guard let returnDate = endDate else { return }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyy"
-        // MARK: Fix this, Проблема в том, что в returnDate приходит nil
-        guard let borrowDate = dateFormatter.date(from: borrowAt) else { return }
-        guard let returnDate = dateFormatter.date(from: returnAt) else {
-            print("fooo")
-            return
-        }
+        let newBorrow = borrowDate.timeIntervalSince1970
+        let newReturn = returnDate.timeIntervalSince1970
         
         let userPostRef = FIRDatabase.database().reference().child("posts").child(uid)
         let ref = userPostRef.childByAutoId()
         
-        let values = ["imageUrl": imageUrl, "itemName": itemName, "description": description, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": borrowDate, "returnAt": returnDate] as [String: Any]
+        let values = ["imageUrl": imageUrl, "itemName": itemName, "description": description, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn] as [String: Any]
         
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {
@@ -95,56 +89,57 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     
     lazy var imageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .black
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 4
         return iv
     }()
     
-    lazy var itemNameTW: UITextView = {
-        let tv = UITextView()
-        tv.font = UIFont.boldSystemFont(ofSize: 14)
-        tv.backgroundColor = .yellow
-        tv.text = "Item name"
-        return tv
+    lazy var itemNameTF: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Item name..."
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.boldSystemFont(ofSize: 14)
+        textField.backgroundColor = textFieldBackgroundColor
+        return textField
     }()
     
-    lazy var itemDescriptionTW: UITextView = {
-        let tv = UITextView()
-        tv.font = UIFont.systemFont(ofSize: 14)
-        tv.backgroundColor = .yellow
-        tv.text = "Item description"
-        return tv
+    lazy var itemDescriptionTF: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Item description..."
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.backgroundColor = textFieldBackgroundColor
+        return textField
     }()
     
     lazy var borrowedAtLabel: UILabel = {
         let label = UILabel()
         label.text = "Borrowed at:"
-        label.backgroundColor = .purple
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
-    lazy var borrowTW: UITextView = {
+    lazy var borrowTV: UITextView = {
         let tv = UITextView()
         tv.font = UIFont.systemFont(ofSize: 14)
-        tv.backgroundColor = .yellow
+        tv.layer.cornerRadius = 8
+        tv.backgroundColor = textFieldBackgroundColor
         return tv
     }()
     
     lazy var returnAtLabel: UILabel = {
         let label = UILabel()
         label.text = "Return at:"
-        label.backgroundColor = .purple
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
-    lazy var returnTW: UITextView = {
+    lazy var returnTV: UITextView = {
         let tv = UITextView()
         tv.font = UIFont.systemFont(ofSize: 14)
-        tv.backgroundColor = .yellow
+        tv.layer.cornerRadius = 8
+        tv.backgroundColor = textFieldBackgroundColor
         return tv
     }()
     
@@ -169,17 +164,17 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyy"
         
-        borrowTW.text = "\(dateFormatter.string(from: range.beginDate))"
-        returnTW.text = "\(dateFormatter.string(from: range.endDate))"
+        borrowTV.text = "\(dateFormatter.string(from: range.beginDate))"
+        returnTV.text = "\(dateFormatter.string(from: range.endDate))"
         
-        startDate = range.beginDate
-        endDate = range.endDate
+        startDate = range.beginDate as Date
+        endDate = range.endDate as Date
     }
     
     fileprivate func setupViews() {
         
         let containerView = UIView()
-        containerView.backgroundColor = .red
+        containerView.backgroundColor = appBackgroundColor
         view.addSubview(containerView)
         
         containerView.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height / 1.7)
@@ -187,28 +182,28 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         containerView.addSubview(imageView)
         imageView.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 160, height: 160)
         
-        containerView.addSubview(itemNameTW)
-        itemNameTW.anchor(top: containerView.topAnchor, left: imageView.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 2, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
+        containerView.addSubview(itemNameTF)
+        itemNameTF.anchor(top: containerView.topAnchor, left: imageView.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
         
-        containerView.addSubview(itemDescriptionTW)
-        itemDescriptionTW.anchor(top: itemNameTW.bottomAnchor, left: imageView.rightAnchor, bottom: imageView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        containerView.addSubview(itemDescriptionTF)
+        itemDescriptionTF.anchor(top: itemNameTF.bottomAnchor, left: imageView.rightAnchor, bottom: imageView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         
         containerView.addSubview(borrowedAtLabel)
-        containerView.addSubview(borrowTW)
+        containerView.addSubview(borrowTV)
         
-        borrowedAtLabel.anchor(top: imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: borrowTW.leftAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
+        borrowedAtLabel.anchor(top: imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: borrowTV.leftAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
         
-        borrowTW.anchor(top: imageView.bottomAnchor, left: borrowedAtLabel.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
+        borrowTV.anchor(top: imageView.bottomAnchor, left: borrowedAtLabel.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
         
         containerView.addSubview(returnAtLabel)
-        containerView.addSubview(returnTW)
+        containerView.addSubview(returnTV)
         
         returnAtLabel.anchor(top: borrowedAtLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: borrowedAtLabel.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: borrowedAtLabel.frame.width, height: 40)
         
-        returnTW.anchor(top: borrowedAtLabel.bottomAnchor, left: borrowTW.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
+        returnTV.anchor(top: borrowedAtLabel.bottomAnchor, left: borrowTV.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
         
         containerView.addSubview(chooseTime)
-        chooseTime.anchor(top: returnTW.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 24, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 56)
+        chooseTime.anchor(top: returnTV.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 24, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 56)
     }
     
     override var prefersStatusBarHidden: Bool {
