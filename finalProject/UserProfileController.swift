@@ -9,11 +9,24 @@
 import UIKit
 import Firebase
 
-class UserProfileController: UICollectionViewController {
+class UserProfileController: UICollectionViewController, UserProfileHeaderDelegate {
     
     let cellId = "cellId"
+    let homePostCellId = "homePostCellId"
     var posts = [Post]()
     var userId: String?
+    
+    var isGridView = true
+    
+    func didChangeToGridView() {
+        isGridView = true
+        collectionView?.reloadData()
+    }
+    
+    func didChangeToListView() {
+        isGridView = false
+        collectionView?.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +41,7 @@ class UserProfileController: UICollectionViewController {
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         
         collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: homePostCellId)
         
         setupLogOutButton()
         
