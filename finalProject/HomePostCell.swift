@@ -27,6 +27,20 @@ class HomePostCell: UICollectionViewCell {
             guard let profileImgUrl = post?.user.profileImageUrl else { return }
             userProfileImageView.loadImage(urlString: profileImgUrl)
             
+            guard let returnAt = post?.returnDate else { return }
+            guard let borrowedAt = post?.borrowedDate else { return }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yy"
+            
+            let attributedText = NSMutableAttributedString(string: "Borrowed at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)])
+            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: borrowedAt))", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.green]))
+            attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 4)]))
+           attributedText.append(NSAttributedString(string: "Return at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)]))
+            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: returnAt))", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.red]))
+            
+            dateLabel.attributedText = attributedText
+            //returnDate.text = "Return at: \(dateFormatter.string(from: returnAt))"
             
             setupAttributedCaption()
         }
@@ -89,6 +103,13 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
+    lazy var returnDateView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.8, alpha: 0.8)
+        view.layer.cornerRadius = 8
+        return view
+    }()
+    
     func handleComment() {
         print("Trying to comment that post")
         guard let post = post else { return }
@@ -114,6 +135,13 @@ class HomePostCell: UICollectionViewCell {
         return label
     }()
     
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "Borrowed at:"
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -124,6 +152,7 @@ class HomePostCell: UICollectionViewCell {
         addSubview(usernameLabel)
         addSubview(optionsButton)
         addSubview(photoImageView)
+        addSubview(returnDateView)
         
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         userProfileImageView.layer.cornerRadius = 40 / 2
@@ -134,6 +163,10 @@ class HomePostCell: UICollectionViewCell {
         
         photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+        returnDateView.anchor(top: userProfileImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: -8, width: self.frame.size.width * 0.45, height: self.frame.size.height * 0.08)
+        
+        returnDateView.addSubview(dateLabel)
+        dateLabel.anchor(top: returnDateView.topAnchor, left: returnDateView.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 8, paddingRight: 8, width: 0, height: returnDateView.frame.size.height)
         
         setupActionButtons()
         

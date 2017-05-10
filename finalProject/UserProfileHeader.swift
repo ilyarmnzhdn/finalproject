@@ -119,7 +119,6 @@ class UserProfileHeader: UICollectionViewCell {
     
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        //label.text = "username"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -127,7 +126,7 @@ class UserProfileHeader: UICollectionViewCell {
     lazy var itemsLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "17\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "15\n", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14)])
         attributedText.append(NSAttributedString(string: "items", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         

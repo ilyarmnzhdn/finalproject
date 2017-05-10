@@ -32,8 +32,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     }
     
     func handlePublish() {
-        guard let itemName = itemNameTF.text, itemName.characters.count > 0 else { return }
-        guard let description = itemDescriptionTF.text, description.characters.count > 0 else { return }
+        guard let caption = captionTV.text, caption.characters.count > 0 else { return }
         guard let image = selectedImage else { return }
         guard let uploadData = UIImageJPEGRepresentation(image, 0.5) else { return }
         guard let borrowAt = borrowTV.text, borrowAt.characters.count > 0 else { return }
@@ -58,8 +57,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     fileprivate func saveToDataBaseWithImageUrl(imageUrl: String) {
         guard let uid = FIRAuth.currentUid else { return }
         guard let postImage = selectedImage else { return }
-        guard let itemName = itemNameTF.text else { return }
-        guard let description = itemDescriptionTF.text else { return }
+        guard let caption = captionTV.text else { return }
         guard let borrowDate = startDate else { return }
         guard let returnDate = endDate else { return }
         
@@ -69,7 +67,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         let userPostRef = FIRDatabase.database().reference().child("posts").child(uid)
         let ref = userPostRef.childByAutoId()
         
-        let values = ["imageUrl": imageUrl, "itemName": itemName, "description": description, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn] as [String: Any]
+        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn] as [String: Any]
         
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {
@@ -95,22 +93,17 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         return iv
     }()
     
-    lazy var itemNameTF: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Item name..."
-        textField.borderStyle = .roundedRect
-        textField.font = UIFont.boldSystemFont(ofSize: 14)
-        textField.backgroundColor = textFieldBackgroundColor
-        return textField
-    }()
-    
-    lazy var itemDescriptionTF: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Item description..."
-        textField.borderStyle = .roundedRect
-        textField.font = UIFont.systemFont(ofSize: 14)
-        textField.backgroundColor = textFieldBackgroundColor
-        return textField
+    // MARK: Add Caption with attributed string
+    lazy var captionTV: UITextView = {
+        let tv = UITextView()
+        tv.isScrollEnabled = true
+        tv.layer.borderWidth = 1
+        tv.layer.borderColor = textFieldBackgroundColor.cgColor
+        tv.font = UIFont.systemFont(ofSize: 14)
+        tv.layer.cornerRadius = 8
+//        let attributedText = NSMutableAttributedString(string: "Enter caption...", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.gray])
+//        tv.attributedText = attributedText
+        return tv
     }()
     
     lazy var borrowedAtLabel: UILabel = {
@@ -176,17 +169,14 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         let containerView = UIView()
         containerView.backgroundColor = appBackgroundColor
         view.addSubview(containerView)
-        
-        containerView.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height / 1.7)
-        
         containerView.addSubview(imageView)
+        containerView.addSubview(captionTV)
+        
+        containerView.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height)
+        
         imageView.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 160, height: 160)
         
-        containerView.addSubview(itemNameTF)
-        itemNameTF.anchor(top: containerView.topAnchor, left: imageView.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
-        
-        containerView.addSubview(itemDescriptionTF)
-        itemDescriptionTF.anchor(top: itemNameTF.bottomAnchor, left: imageView.rightAnchor, bottom: imageView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        captionTV.anchor(top: containerView.topAnchor, left: imageView.rightAnchor, bottom: imageView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         
         containerView.addSubview(borrowedAtLabel)
         containerView.addSubview(borrowTV)
