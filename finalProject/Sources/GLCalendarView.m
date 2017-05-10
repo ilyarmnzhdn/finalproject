@@ -206,7 +206,7 @@ static NSString * const CELL_REUSE_IDENTIFIER = @"DayCell";
 - (NSDate *)lastDate
 {
     if (!_lastDate) {
-        self.lastDate = [GLDateUtils dateByAddingDays:30 toDate:[NSDate date]];
+        self.lastDate = [GLDateUtils dateByAddingDays:40 toDate:[NSDate date]];
     }
     return _lastDate;
 }

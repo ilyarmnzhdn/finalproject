@@ -16,7 +16,6 @@ class TimeframeViewController: UIViewController, GLCalendarViewDelegate {
     //@IBOutlet weak var calendarView: GLCalendarView!
     lazy var calendarView: GLCalendarView = {
         let view = GLCalendarView()
-        view.backgroundColor = .purple
         return view
     }()
     
