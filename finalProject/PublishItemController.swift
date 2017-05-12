@@ -11,8 +11,12 @@ import Firebase
 
 class PublishItemController: UIViewController, TimeFrameDelegate {
     
-    
     static let updateFeedNotificationName = NSNotification.Name(rawValue: "UpdateFeed")
+    
+    var followers = [User]()
+    var filteredFollowers = [User]()
+    
+    let cellId = "cellId"
     
     var selectedImage: UIImage? {
         didSet {
@@ -20,17 +24,70 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         }
     }
     
+    let containerView = UIView()
+    
+    lazy var followersView: UICollectionView = {
+        let layot = UICollectionViewFlowLayout()
+        layot.scrollDirection = .horizontal
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layot)
+        return cv
+    }()
+    
     var startDate: Date?
     var endDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Publish", style: .plain, target: self, action: #selector(handlePublish))
+        followersView.delegate = self
+        followersView.dataSource = self
+        followersView.register(PublishItemCell.self, forCellWithReuseIdentifier: cellId)
+        followersView.backgroundColor = navBarBackgroudColor
+        
+        containerView.backgroundColor = appBackgroundColor
+        view.addSubview(containerView)
+        containerView.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height * 0.65)
+        view.addSubview(followersView)
+        followersView.anchor(top: containerView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height * 0.35)
         
         setupViews()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Publish", style: .plain, target: self, action: #selector(handlePublish))
+        
+        fetchFollowingUsersIds()
     }
     
+    
+    
+    fileprivate func fetchFollowingUsersIds() {
+        guard let uid = FIRAuth.currentUid else { return }
+        FIRDatabase.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let usersIdsDictionary = snapshot.value as? [String: Any] else { return }
+            
+            usersIdsDictionary.forEach({ (key, value) in
+                FIRDatabase.fetchUserWithUID(uid: key, completion: { (user) in
+                    self.followers.append(user)
+                    print(self.followers)
+                    
+                    self.followersView.reloadData()
+                })
+                
+                self.followers.sort(by: { (u1, u2) -> Bool in
+                    
+                    return u1.username.compare(u2.username) == .orderedAscending
+                    
+                })
+            })
+            
+            self.filteredFollowers = self.followers
+            self.followersView.reloadData()
+            
+        }) { (err) in
+            print("Failed to fetch following user uid's: ", err.localizedDescription)
+        }
+    }
+
     func handlePublish() {
         guard let caption = captionTV.text, caption.characters.count > 0 else { return }
         guard let image = selectedImage else { return }
@@ -146,6 +203,15 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         return button
     }()
     
+    lazy var borrowToLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Item borrowed to:"
+        label.textColor = topBarBackgroundColor
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        
+        return label
+    }()
+    
     func handleChooseTimeframe() {
         print("Choose time")
         let timeframeController = TimeframeViewController()
@@ -166,13 +232,8 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     
     fileprivate func setupViews() {
         
-        let containerView = UIView()
-        containerView.backgroundColor = appBackgroundColor
-        view.addSubview(containerView)
         containerView.addSubview(imageView)
         containerView.addSubview(captionTV)
-        
-        containerView.anchor(top: topLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height)
         
         imageView.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 160, height: 160)
         
@@ -194,6 +255,10 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         
         containerView.addSubview(chooseTime)
         chooseTime.anchor(top: returnTV.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 24, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 56)
+        
+        containerView.addSubview(borrowToLabel)
+        borrowToLabel.anchor(top: chooseTime.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 16, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 0, height: 60)
+        borrowToLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     
     override var prefersStatusBarHidden: Bool {

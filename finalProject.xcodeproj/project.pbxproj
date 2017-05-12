@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180154991EC5D59100662283 /* PublishItemController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180154981EC5D59100662283 /* PublishItemController+Extention.swift */; };
+		1801549B1EC5DD7700662283 /* PublishItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801549A1EC5DD7700662283 /* PublishItemCell.swift */; };
 		1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50D1EB710FF00A03067 /* HomeController.swift */; };
 		1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50F1EB711EF00A03067 /* HomeController+extention.swift */; };
 		1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5111EB712D200A03067 /* HomePostCell.swift */; };
@@ -65,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180154981EC5D59100662283 /* PublishItemController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublishItemController+Extention.swift"; sourceTree = "<group>"; };
+		1801549A1EC5DD7700662283 /* PublishItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishItemCell.swift; sourceTree = "<group>"; };
 		1818B50D1EB710FF00A03067 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		1818B50F1EB711EF00A03067 /* HomeController+extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeController+extention.swift"; sourceTree = "<group>"; };
 		1818B5111EB712D200A03067 /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
@@ -179,11 +183,13 @@
 			isa = PBXGroup;
 			children = (
 				1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */,
-				18D577321EB5DF83006C6479 /* ShareItemController.swift */,
 				1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */,
+				18D577321EB5DF83006C6479 /* ShareItemController.swift */,
 				18D5772C1EB5CF14006C6479 /* PhotoSelectorCell.swift */,
 				18D577301EB5D46C006C6479 /* PhotoSelectorHeader.swift */,
 				188DB16C1EC04FEC00DB888E /* PublishItemController.swift */,
+				180154981EC5D59100662283 /* PublishItemController+Extention.swift */,
+				1801549A1EC5DD7700662283 /* PublishItemCell.swift */,
 				188DB16E1EC05B2B00DB888E /* TimeframeViewController.swift */,
 			);
 			name = AddItem;
@@ -488,6 +494,7 @@
 				1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */,
 				184152591EB891EA00360A4F /* UserSearchCell.swift in Sources */,
 				188DB1641EC04C8800DB888E /* GLDateUtils.m in Sources */,
+				180154991EC5D59100662283 /* PublishItemController+Extention.swift in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
 				18E809F01EBF3A450097211B /* Comment.swift in Sources */,
 				188DB1601EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m in Sources */,
@@ -500,6 +507,7 @@
 				18E809EC1EBF37B30097211B /* CommentCell.swift in Sources */,
 				188DB1621EC04C8800DB888E /* GLCalendarView.m in Sources */,
 				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
+				1801549B1EC5DD7700662283 /* PublishItemCell.swift in Sources */,
 				18D577361EB5F6CB006C6479 /* Post.swift in Sources */,
 				188DB1611EC04C8800DB888E /* GLCalendarMonthCoverView.m in Sources */,
 				1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */,
