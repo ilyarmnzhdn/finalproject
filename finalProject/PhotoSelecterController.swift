@@ -84,7 +84,11 @@ class PhotoSelectorController: UICollectionViewController {
     }
     
     fileprivate func setupNavigationButtons() {
-        navigationController?.navigationBar.tintColor = .black
+        guard let navBar = navigationController?.navigationBar else { return }
+        navBar.tintColor = .white
+        navBar.barTintColor = topBarBackgroundColor
+        navBar.barStyle = .blackOpaque
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCansel))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
