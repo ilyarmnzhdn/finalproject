@@ -37,10 +37,10 @@ class HomePostCell: UICollectionViewCell {
             dateFormatter.dateFormat = "dd/MM/yy"
             
             let attributedText = NSMutableAttributedString(string: "Borrowed at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)])
-            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: borrowedAt))", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.green]))
+            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: borrowedAt))", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.green]))
             attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 4)]))
            attributedText.append(NSAttributedString(string: "Return at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)]))
-            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: returnAt))", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.red]))
+            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: returnAt))", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.red]))
             
             dateLabel.attributedText = attributedText
             //returnDate.text = "Return at: \(dateFormatter.string(from: returnAt))"
@@ -175,7 +175,7 @@ class HomePostCell: UICollectionViewCell {
         returnDateView.anchor(top: userProfileImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: -8, width: self.frame.size.width * 0.45, height: self.frame.size.height * 0.08)
         
         returnDateView.addSubview(dateLabel)
-        dateLabel.anchor(top: returnDateView.topAnchor, left: returnDateView.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 8, paddingRight: 8, width: 0, height: returnDateView.frame.size.height)
+        dateLabel.anchor(top: returnDateView.topAnchor, left: returnDateView.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 8, paddingRight: 16, width: 0, height: returnDateView.frame.size.height)
         
         setupActionButtons()
         

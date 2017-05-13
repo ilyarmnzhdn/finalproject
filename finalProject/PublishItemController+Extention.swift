@@ -14,6 +14,7 @@ extension PublishItemController: UICollectionViewDataSource, UICollectionViewDel
         let cell = followersView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PublishItemCell
 
         cell.user = self.followers[indexPath.item]
+        cell.photoImageView.alpha = 0.2
         
         return cell
     }
@@ -33,16 +34,26 @@ extension PublishItemController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = followersView.cellForItem(at: indexPath) as! PublishItemCell
+        
         print(didSelected)
+        //MARK: Need refactor
         let borrowed = followers[indexPath.row]
-        if borrowedTo == borrowed.uid {
+        if receiver == borrowed.uid {
             print("You already added this user")
             didSelected = false
-            borrowedTo = ""
-        } else {
-            borrowedTo = borrowed.uid
-            print(borrowedTo)
-            didSelected = true
+            receiver = ""
+            cell.photoImageView.alpha = 0.2
+        } else if receiver != borrowed.uid {
+            if receiver == "" {
+                receiver = borrowed.uid
+                print(receiver)
+                didSelected = true
+                cell.photoImageView.alpha = 1
+            } else {
+                return
+            }
         }
     }
+    
 }

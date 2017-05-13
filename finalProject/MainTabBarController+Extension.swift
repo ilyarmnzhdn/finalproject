@@ -10,7 +10,6 @@ import UIKit
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
-        // Change this code in my final project
         let index = viewControllers?.index(of: viewController)
         if index == 2 {
             
@@ -22,7 +21,6 @@ extension MainTabBarController: UITabBarControllerDelegate {
             
             return false
         }
-        
         
         return true
     }

@@ -15,7 +15,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     
     var followers = [User]()
     var filteredFollowers = [User]()
-    var borrowedTo: String = ""
+    var receiver: String = ""
     var didSelected = false
     
     let cellId = "cellId"
@@ -123,13 +123,18 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         guard let borrowDate = startDate else { return }
         guard let returnDate = endDate else { return }
         
+        
         let newBorrow = borrowDate.timeIntervalSince1970
         let newReturn = returnDate.timeIntervalSince1970
         
         let userPostRef = FIRDatabase.database().reference().child("posts").child(uid)
         let ref = userPostRef.childByAutoId()
+        
+        if segmentController.selectedSegmentIndex == 0 {
             
-        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn, "borrowedTo": borrowedTo] as [String: Any]
+        }
+            
+        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn, "lendTo": segmentController.selectedSegmentIndex == 0 ? receiver : 0, "BorrowedFrom": segmentController.selectedSegmentIndex == 1 ? receiver : 0] as [String: Any]
             
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {
@@ -170,7 +175,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     
     lazy var borrowedAtLabel: UILabel = {
         let label = UILabel()
-        label.text = "Borrowed at:"
+        label.text = "Lent at:"
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -208,14 +213,23 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         return button
     }()
     
-    lazy var borrowToLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Item borrowed to:"
-        label.textColor = topBarBackgroundColor
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        
-        return label
+    lazy var segmentController: UISegmentedControl = {
+        let sc = UISegmentedControl()
+        sc.insertSegment(withTitle: "Lend to:", at: 0, animated: true)
+        sc.insertSegment(withTitle: "Borrowed from:", at: 1, animated: true)
+        sc.tintColor = topBarBackgroundColor
+        sc.selectedSegmentIndex = 0
+        sc.addTarget(self, action: #selector(handleSegmentController), for: .valueChanged)
+        return sc
     }()
+    
+    func handleSegmentController() {
+        if segmentController.selectedSegmentIndex == 0 {
+            borrowedAtLabel.text = "Lent at:"
+        } else {
+            borrowedAtLabel.text = "Borrowed at:"
+        }
+    }
     
     func handleChooseTimeframe() {
         print("Choose time")
@@ -247,7 +261,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         containerView.addSubview(borrowedAtLabel)
         containerView.addSubview(borrowTV)
         
-        borrowedAtLabel.anchor(top: imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: borrowTV.leftAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
+        borrowedAtLabel.anchor(top: imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 88, height: 40)
         
         borrowTV.anchor(top: imageView.bottomAnchor, left: borrowedAtLabel.rightAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 40)
         
@@ -261,9 +275,9 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         containerView.addSubview(chooseTime)
         chooseTime.anchor(top: returnTV.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 24, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 56)
         
-        containerView.addSubview(borrowToLabel)
-        borrowToLabel.anchor(top: chooseTime.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 16, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 0, height: 60)
-        borrowToLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        containerView.addSubview(segmentController)
+        segmentController.anchor(top: chooseTime.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 16, paddingLeft: 0, paddingBottom: 24, paddingRight: 0, width: 0, height: 40)
+        segmentController.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     
     override var prefersStatusBarHidden: Bool {

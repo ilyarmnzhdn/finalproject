@@ -15,6 +15,7 @@
 		1818B5141EB73D8800A03067 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5131EB73D8800A03067 /* User.swift */; };
 		1818B5161EB753E100A03067 /* UserProfileController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5151EB753E100A03067 /* UserProfileController+Extention.swift */; };
 		1818B5181EB7545600A03067 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5171EB7545600A03067 /* FirebaseUtils.swift */; };
+		18260A2E1EC774160013ACF8 /* LikedPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18260A2D1EC774160013ACF8 /* LikedPostController.swift */; };
 		1833E20D1EB48A42008570CD /* MainTabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */; };
 		1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */; };
 		1833E2121EB48EB0008570CD /* PhotoSelectorController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */; };
@@ -75,6 +76,7 @@
 		1818B5131EB73D8800A03067 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1818B5151EB753E100A03067 /* UserProfileController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfileController+Extention.swift"; sourceTree = "<group>"; };
 		1818B5171EB7545600A03067 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		18260A2D1EC774160013ACF8 /* LikedPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostController.swift; sourceTree = "<group>"; };
 		1833E20C1EB48A42008570CD /* MainTabBarController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainTabBarController+Extension.swift"; sourceTree = "<group>"; };
 		1833E20F1EB48BBB008570CD /* PhotoSelecterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelecterController.swift; sourceTree = "<group>"; };
 		1833E2111EB48EB0008570CD /* PhotoSelectorController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorController+Extension.swift"; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		18260A2C1EC773700013ACF8 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				18260A2D1EC774160013ACF8 /* LikedPostController.swift */,
+			);
+			name = Like;
+			sourceTree = "<group>";
+		};
 		1833E20E1EB48B9B008570CD /* AddItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +238,7 @@
 			children = (
 				188DB16A1EC04DCE00DB888E /* BridgingHeader.h */,
 				188DB16B1EC04E7D00DB888E /* Helper */,
+				18260A2C1EC773700013ACF8 /* Like */,
 				184253581EADCF2F00CCB09E /* Utils */,
 				185B93ED1EBDBC06007F8D25 /* Camera */,
 				184152531EB88AB600360A4F /* Search */,
@@ -504,6 +515,7 @@
 				1818B5181EB7545600A03067 /* FirebaseUtils.swift in Sources */,
 				1862FD281EAF6E910021E50E /* UserProfileHeader.swift in Sources */,
 				1818B5161EB753E100A03067 /* UserProfileController+Extention.swift in Sources */,
+				18260A2E1EC774160013ACF8 /* LikedPostController.swift in Sources */,
 				18E809EC1EBF37B30097211B /* CommentCell.swift in Sources */,
 				188DB1621EC04C8800DB888E /* GLCalendarView.m in Sources */,
 				1862FD241EAF631C0021E50E /* UserProfileController.swift in Sources */,
