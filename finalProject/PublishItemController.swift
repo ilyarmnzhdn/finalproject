@@ -15,6 +15,8 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
     
     var followers = [User]()
     var filteredFollowers = [User]()
+    var borrowedTo: String = ""
+    var didSelected = false
     
     let cellId = "cellId"
     
@@ -57,8 +59,6 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         fetchFollowingUsersIds()
     }
     
-    
-    
     fileprivate func fetchFollowingUsersIds() {
         guard let uid = FIRAuth.currentUid else { return }
         FIRDatabase.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -95,20 +95,25 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         guard let borrowAt = borrowTV.text, borrowAt.characters.count > 0 else { return }
         guard let returnAt = returnTV.text, returnAt.characters.count > 0 else { return }
         
+        if didSelected != false {
+        
         navigationItem.rightBarButtonItem?.isEnabled = false
         
-        let filename = UUID().uuidString
-        FIRStorage.storage().reference().child("posts").child(filename).put(uploadData, metadata: nil) { (metadata, err) in
-            if let err = err {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-                print("Fail to upload post image", err.localizedDescription)
-                return
-            }
+            let filename = UUID().uuidString
+            FIRStorage.storage().reference().child("posts").child(filename).put(uploadData, metadata: nil) { (metadata, err) in
+                if let err = err {
+                    self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    print("Fail to upload post image", err.localizedDescription)
+                    return
+                }
             
-            guard let imageUrl = metadata?.downloadURL()?.absoluteString else { return }
+                guard let imageUrl = metadata?.downloadURL()?.absoluteString else { return }
             
-            self.saveToDataBaseWithImageUrl(imageUrl: imageUrl)
+                self.saveToDataBaseWithImageUrl(imageUrl: imageUrl)
+                }
         }
+        
+        print("You must select person")
     }
     
     fileprivate func saveToDataBaseWithImageUrl(imageUrl: String) {
@@ -123,9 +128,9 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
         
         let userPostRef = FIRDatabase.database().reference().child("posts").child(uid)
         let ref = userPostRef.childByAutoId()
-        
-        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn] as [String: Any]
-        
+            
+        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn, "borrowedTo": borrowedTo] as [String: Any]
+            
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -137,7 +142,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
             
             NotificationCenter.default.post(name: ShareItemController.updateFeedNotificationName, object: nil)
         }
-        
+    
     }
     
     // VIEW

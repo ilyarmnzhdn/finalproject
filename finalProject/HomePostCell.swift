@@ -126,18 +126,18 @@ class HomePostCell: UICollectionViewCell {
         delegate?.didLike(for: self)
     }
     
-    lazy var sendMessageButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), for: .normal)
-        return button
-    }()
-    
-    lazy var bookmarkButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
-        return button
-    }()
-    
+//    lazy var sendMessageButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setImage(#imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), for: .normal)
+//        return button
+//    }()
+//    
+//    lazy var bookmarkButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        //button.setImage(#imageLiteral(resourceName: "ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
+//        return button
+//    }()
+//    
     lazy var captionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -184,14 +184,11 @@ class HomePostCell: UICollectionViewCell {
     }
     
     fileprivate func setupActionButtons() {
-        let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, sendMessageButton])
+        let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton])
         stackView.distribution = .fillEqually
         
         addSubview(stackView)
-        stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 120, height: 50)
-        
-        addSubview(bookmarkButton)
-        bookmarkButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 40, height: 50)
+        stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 80, height: 50)
     }
     
     required init?(coder aDecoder: NSCoder) {

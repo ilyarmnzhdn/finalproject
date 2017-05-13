@@ -132,13 +132,6 @@ class UserProfileHeader: UICollectionViewCell {
         delegate?.didChangeToGridView()
     }
     
-    lazy var bookmarkButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
-        button.tintColor = UIColor(white: 0, alpha: 0.2)
-        return button
-    }()
-    
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -233,7 +226,7 @@ class UserProfileHeader: UICollectionViewCell {
         let bottomDividerView = UIView()
         bottomDividerView.backgroundColor = UIColor.lightGray
         
-        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarkButton])
+        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton])
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

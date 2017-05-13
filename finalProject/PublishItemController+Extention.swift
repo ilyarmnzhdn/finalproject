@@ -31,4 +31,18 @@ extension PublishItemController: UICollectionViewDataSource, UICollectionViewDel
     
         return UIEdgeInsetsMake(0, 8, 0, 8)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(didSelected)
+        let borrowed = followers[indexPath.row]
+        if borrowedTo == borrowed.uid {
+            print("You already added this user")
+            didSelected = false
+            borrowedTo = ""
+        } else {
+            borrowedTo = borrowed.uid
+            print(borrowedTo)
+            didSelected = true
+        }
+    }
 }

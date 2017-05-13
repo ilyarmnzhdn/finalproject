@@ -29,7 +29,7 @@ class PublishItemCell: UICollectionViewCell {
         iv.layer.cornerRadius = 160 / 2
         iv.layer.borderWidth = 2
         iv.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
-        
+
         return iv
     }()
     
