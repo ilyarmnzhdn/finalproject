@@ -172,8 +172,8 @@ class HomePostCell: UICollectionViewCell {
         
         photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        returnDateView.anchor(top: userProfileImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: -8, width: self.frame.size.width * 0.45, height: self.frame.size.height * 0.08)
-        
+        returnDateView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: -8, width: 0, height: self.frame.size.height * 0.08)
+        //self.frame.size.width * 0.45
         returnDateView.addSubview(dateLabel)
         dateLabel.anchor(top: returnDateView.topAnchor, left: returnDateView.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 8, paddingRight: 16, width: 0, height: returnDateView.frame.size.height)
         
