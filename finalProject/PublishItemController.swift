@@ -134,7 +134,7 @@ class PublishItemController: UIViewController, TimeFrameDelegate {
             
         }
             
-        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn, "lendTo": segmentController.selectedSegmentIndex == 0 ? receiver : 0, "BorrowedFrom": segmentController.selectedSegmentIndex == 1 ? receiver : 0] as [String: Any]
+        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "borrowedAt": newBorrow, "returnAt": newReturn, "lendTo": segmentController.selectedSegmentIndex == 0 ? receiver : "", "borrowedFrom": segmentController.selectedSegmentIndex == 1 ? receiver : ""] as [String: Any]
             
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {

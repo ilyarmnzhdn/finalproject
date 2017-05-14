@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol HomePostCellDelegate {
     func didTapComment(post: Post)
@@ -36,14 +37,45 @@ class HomePostCell: UICollectionViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yy"
             
-            let attributedText = NSMutableAttributedString(string: "Borrowed at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)])
-            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: borrowedAt))", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.green]))
-            attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 4)]))
-           attributedText.append(NSAttributedString(string: "Return at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)]))
-            attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: returnAt))", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.red]))
+            guard let lendTo = post?.lendTo else { return }
+            guard let borrowedFrom = post?.borrowedFrom else { return }
             
-            dateLabel.attributedText = attributedText
-            //returnDate.text = "Return at: \(dateFormatter.string(from: returnAt))"
+            var receiver = ""
+            if lendTo == "" {
+                receiver = borrowedFrom
+                print("borrowedFrom: \(receiver)")
+                
+                let attributedText = NSMutableAttributedString(string: "Borrowed at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)])
+                attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: borrowedAt))", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.green]))
+                attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 4)]))
+                attributedText.append(NSAttributedString(string: "Return at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)]))
+                attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: returnAt))", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.red]))
+                
+                dateLabel.attributedText = attributedText
+                
+                FIRDatabase.fetchUserWithUID(uid: receiver, completion: { (user) in
+                    self.receiverLabel.text = "Borrowed from: \(user.username)"
+                    let receiverImgUrl = user.profileImageUrl
+                    self.receiverImage.loadImage(urlString: receiverImgUrl)
+                })
+            } else {
+                receiver = lendTo
+                print("lendTo: \(receiver)")
+                
+                let attributedText = NSMutableAttributedString(string: "Lent at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)])
+                attributedText.append(NSAttributedString(string: "    \(dateFormatter.string(from: borrowedAt))", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.green]))
+                attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 4)]))
+                attributedText.append(NSAttributedString(string: "Return at:", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)]))
+                attributedText.append(NSAttributedString(string: " \(dateFormatter.string(from: returnAt))", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.red]))
+                
+                dateLabel.attributedText = attributedText
+                
+                FIRDatabase.fetchUserWithUID(uid: receiver, completion: { (user) in
+                    self.receiverLabel.text = "Lend to: \(user.username)"
+                    let receiverImgUrl = user.profileImageUrl
+                    self.receiverImage.loadImage(urlString: receiverImgUrl)
+                })
+            }
             
             setupAttributedCaption()
         }
@@ -114,6 +146,27 @@ class HomePostCell: UICollectionViewCell {
         return view
     }()
     
+    lazy var receiverView: UIView = {
+        let view = UIView()
+        view.backgroundColor = navBarBackgroudColor
+        view.alpha = 0.6
+        return view
+    }()
+    
+    lazy var receiverLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    
+    lazy var receiverImage: CustomImageView = {
+        let iv = CustomImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 40 / 2
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
     func handleComment() {
         print("Trying to comment that post")
         guard let post = post else { return }
@@ -162,6 +215,7 @@ class HomePostCell: UICollectionViewCell {
         addSubview(optionsButton)
         addSubview(photoImageView)
         addSubview(returnDateView)
+        addSubview(receiverView)
         
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         userProfileImageView.layer.cornerRadius = 40 / 2
@@ -172,10 +226,20 @@ class HomePostCell: UICollectionViewCell {
         
         photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        returnDateView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: -8, width: 0, height: self.frame.size.height * 0.08)
+        returnDateView.anchor(top: userProfileImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.size.width * 0.6, height: 48)
+        returnDateView.centerXAnchor.constraint(equalTo: photoImageView.centerXAnchor).isActive = true
+        receiverView.anchor(top: nil, left: photoImageView.leftAnchor, bottom: photoImageView.bottomAnchor, right: photoImageView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 56)
         //self.frame.size.width * 0.45
+        //self.frame.size.height * 0.08
         returnDateView.addSubview(dateLabel)
-        dateLabel.anchor(top: returnDateView.topAnchor, left: returnDateView.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 8, paddingRight: 16, width: 0, height: returnDateView.frame.size.height)
+        dateLabel.anchor(top: returnDateView.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 4, paddingLeft: 8, paddingBottom: 8, paddingRight: 16, width: returnDateView.frame.size.width * 0.9, height: returnDateView.frame.size.height)
+        dateLabel.centerXAnchor.constraint(equalTo: returnDateView.centerXAnchor).isActive = true
+        
+        //receiverView
+        receiverView.addSubview(receiverLabel)
+        receiverView.addSubview(receiverImage)
+        receiverLabel.anchor(top: receiverView.topAnchor, left: receiverView.leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: receiverView.frame.size.width * 0.7, height: 40)
+        receiverImage.anchor(top: receiverView.topAnchor, left: nil, bottom: nil, right: receiverView.rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 16, width: 40, height: 40)
         
         setupActionButtons()
         

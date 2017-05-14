@@ -15,6 +15,8 @@ struct Post {
     let user: User
     let imageUrl: String
     let caption: String
+    let lendTo: String
+    let borrowedFrom: String
     let creationDate: Date
     let borrowedDate: Date
     let returnDate: Date
@@ -25,6 +27,8 @@ struct Post {
         self.user = user
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
         self.caption = dictionary["caption"] as? String ?? ""
+        self.lendTo = dictionary["lendTo"] as? String ?? ""
+        self.borrowedFrom = dictionary["borrowedFrom"] as? String ?? ""
         
         let timeForCreationDate = dictionary["creationDate"] as? Double ?? 0 //need to change to creationDate
         self.creationDate = Date(timeIntervalSince1970: timeForCreationDate)
