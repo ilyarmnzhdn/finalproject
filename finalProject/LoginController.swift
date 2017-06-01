@@ -55,16 +55,19 @@ class LoginController: UIViewController {
         
         if isFormValid {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+            loginButton.alpha = 1
+            loginButton.backgroundColor = topBarBackgroundColor
         } else {
             loginButton.isEnabled = false
-            loginButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+            loginButton.alpha = 0.5
+            loginButton.backgroundColor = topBarBackgroundColor
         }
     }
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        button.alpha = 0.5
+        button.backgroundColor = topBarBackgroundColor
         button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)

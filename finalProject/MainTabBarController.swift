@@ -45,7 +45,7 @@ class MainTabBarController: UITabBarController {
 
         // Like
         
-        let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"))
+        let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: LikedPostController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         // User Profile
         

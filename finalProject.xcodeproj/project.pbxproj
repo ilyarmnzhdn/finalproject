@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		180154991EC5D59100662283 /* PublishItemController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180154981EC5D59100662283 /* PublishItemController+Extention.swift */; };
 		1801549B1EC5DD7700662283 /* PublishItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801549A1EC5DD7700662283 /* PublishItemCell.swift */; };
+		1807962C1EC8C2AF00F67841 /* LikedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807962B1EC8C2AF00F67841 /* LikedPostCell.swift */; };
+		1807962F1EC8C48500F67841 /* LikedPostController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807962E1EC8C48500F67841 /* LikedPostController+Extention.swift */; };
 		1818B50E1EB710FF00A03067 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50D1EB710FF00A03067 /* HomeController.swift */; };
 		1818B5101EB711EF00A03067 /* HomeController+extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B50F1EB711EF00A03067 /* HomeController+extention.swift */; };
 		1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818B5111EB712D200A03067 /* HomePostCell.swift */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		180154981EC5D59100662283 /* PublishItemController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublishItemController+Extention.swift"; sourceTree = "<group>"; };
 		1801549A1EC5DD7700662283 /* PublishItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishItemCell.swift; sourceTree = "<group>"; };
+		1807962B1EC8C2AF00F67841 /* LikedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostCell.swift; sourceTree = "<group>"; };
+		1807962E1EC8C48500F67841 /* LikedPostController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LikedPostController+Extention.swift"; sourceTree = "<group>"; };
 		1818B50D1EB710FF00A03067 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		1818B50F1EB711EF00A03067 /* HomeController+extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeController+extention.swift"; sourceTree = "<group>"; };
 		1818B5111EB712D200A03067 /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				18260A2D1EC774160013ACF8 /* LikedPostController.swift */,
+				1807962E1EC8C48500F67841 /* LikedPostController+Extention.swift */,
+				1807962B1EC8C2AF00F67841 /* LikedPostCell.swift */,
 			);
 			name = Like;
 			sourceTree = "<group>";
@@ -504,12 +510,14 @@
 				18E809EE1EBF38200097211B /* CommentController+Extention.swift in Sources */,
 				1818B5121EB712D200A03067 /* HomePostCell.swift in Sources */,
 				184152591EB891EA00360A4F /* UserSearchCell.swift in Sources */,
+				1807962F1EC8C48500F67841 /* LikedPostController+Extention.swift in Sources */,
 				188DB1641EC04C8800DB888E /* GLDateUtils.m in Sources */,
 				180154991EC5D59100662283 /* PublishItemController+Extention.swift in Sources */,
 				184253451EADBBDE00CCB09E /* AppDelegate.swift in Sources */,
 				18E809F01EBF3A450097211B /* Comment.swift in Sources */,
 				188DB1601EC04C8800DB888E /* GLCalendarDayCellBackgroundCover.m in Sources */,
 				1862FD221EAF625C0021E50E /* MainTabBarController.swift in Sources */,
+				1807962C1EC8C2AF00F67841 /* LikedPostCell.swift in Sources */,
 				188DB15D1EC04C8800DB888E /* GLCalendarDateRange.m in Sources */,
 				1833E2101EB48BBB008570CD /* PhotoSelecterController.swift in Sources */,
 				1818B5181EB7545600A03067 /* FirebaseUtils.swift in Sources */,

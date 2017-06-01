@@ -37,7 +37,6 @@ class UserProfileHeader: UICollectionViewCell {
             editProfileFollowButton.isEnabled = false
         } else {
             // Check if following
-                
             FIRDatabase.database().reference().child("following").child(currentLoggedInUser).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 if let isFollowing = snapshot.value as? Int, isFollowing == 1 {

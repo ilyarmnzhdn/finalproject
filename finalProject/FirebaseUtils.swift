@@ -21,6 +21,8 @@ extension FIRDatabase {
             print("Failed to fetch user for posts: ", err.localizedDescription)
         }
     }
+    
+    
 }
 
 extension FIRAuth {
