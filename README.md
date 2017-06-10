@@ -1,6 +1,5 @@
 # Lendify
 This is my [Final project](https://dbp.erciyes.edu.tr/Courses/Course.aspx?Course=/bXQvOm7wzQ=) for [Computer Engineering Degree at Erciyes University](http://bm.erciyes.edu.tr/en/index.html)
-## to do
 
 # How to
 
@@ -9,12 +8,12 @@ The easiest way to fork(_download_) this project is to go to the top right corne
 
 ## Open project
 **Hardware**
-Firstly, you need to use Aplle's [Macbook/iMac etc.](https://www.apple.com/mac/) or [Hackintosh](http://www.hackintosh.com/).
+You need to use Aplle's [Macbook/iMac etc.](https://www.apple.com/mac/) or [Hackintosh](http://www.hackintosh.com/).
 
 **Software**
 I created this project using [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12), you can also use it for opening this project or if you want(_have a lot of money_) you can use [AppCode](https://www.jetbrains.com/objc/?fromMenu).
     
-    
+## todo
 
-## Change
-Create label with this text "Borrowed to:" in the actionButtonsView, soon create vertical separator between like/comment buttons and created label.
+### Implement "Edit profile" in UserProfile.
+### Show correct numbers for items, lend and borrow labels in UserProfileHeader.
