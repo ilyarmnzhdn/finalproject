@@ -13,7 +13,7 @@ You need to use Apple's [Macbook/iMac etc.](https://www.apple.com/mac/) or [Hack
 **Software**
 I created this project using [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12), you can also use it for opening this project or if you want(_have a lot of money_) you can use [AppCode](https://www.jetbrains.com/objc/?fromMenu).
     
-## todo
+### todo
 
-### Implement "Edit profile" in UserProfile.
-### Show correct numbers for items, lend and borrow labels in UserProfileHeader.
+- [] Implement "Edit profile" in UserProfile.
+- [] Show correct numbers for items, lend and borrow labels in UserProfileHeader.
