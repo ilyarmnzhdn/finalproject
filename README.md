@@ -8,7 +8,7 @@ The easiest way to fork(_download_) this project is to go to the top right corne
 
 ## Open project
 **Hardware**
-You need to use Aplle's [Macbook/iMac etc.](https://www.apple.com/mac/) or [Hackintosh](http://www.hackintosh.com/).
+You need to use Apple's [Macbook/iMac etc.](https://www.apple.com/mac/) or [Hackintosh](http://www.hackintosh.com/).
 
 **Software**
 I created this project using [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12), you can also use it for opening this project or if you want(_have a lot of money_) you can use [AppCode](https://www.jetbrains.com/objc/?fromMenu).
