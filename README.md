@@ -15,5 +15,7 @@ I created this project using [Xcode](https://itunes.apple.com/us/app/xcode/id497
     
 ### todo
 
+- [ ] Implement Local Notifications.
 - [ ] Implement "Edit profile" in UserProfile.
 - [ ] Show correct numbers for items, lend and borrow labels in UserProfileHeader.
+- [ ] Implement "Login with Facebook".
