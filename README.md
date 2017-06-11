@@ -19,3 +19,5 @@ I created this project using [Xcode](https://itunes.apple.com/us/app/xcode/id497
 - [ ] Implement "Edit profile" in UserProfile.
 - [ ] Show correct numbers for items, lend and borrow labels in UserProfileHeader.
 - [ ] Implement "Login with Facebook".
+- [ ] Show notification if someone liked somebody's post. 
+- [ ] Show notification if someone commented somebody's post. 
