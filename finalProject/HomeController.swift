@@ -8,19 +8,78 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
-class HomeController: UICollectionViewController, HomePostCellDelegate {
+class HomeController: UICollectionViewController, HomePostCellDelegate, UNUserNotificationCenterDelegate {
     
     let cellId = "cellId"
     var posts = [Post]()
+    let currentDate = Date()
+    
+    func findOutOfDate(posts: [Post]) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyy"
+        
+        for post in posts {
+            if post.lendTo == "" && post.borrowedFrom != "" {
+                let returnDate = post.returnDate
+
+                if formatter.string(from: returnDate) == formatter.string(from: currentDate) {
+                    guard var outOfDatePosts = UserDefaults.standard.value(forKey: "postsId") as? [String] else {
+                        UserDefaults.standard.set([], forKey: "postsId")
+                        UserDefaults.standard.synchronize()
+                        return
+                    }
+                    
+                    var isExist = false
+                    for item in outOfDatePosts {
+                        if post.id == item {
+                            isExist = true
+                        }
+                    }
+                    
+                    if !isExist {
+                        showNotification(post.caption)
+                        outOfDatePosts.append(post.id!)
+                        UserDefaults.standard.set(outOfDatePosts, forKey: "postsId")
+                        UserDefaults.standard.synchronize()
+                    }
+                    
+                    print("\n \n \n BANG!")
+                }
+            }
+        }
+    }
+    
+    func showNotification(_ caption: String) {
+        let notification = UNMutableNotificationContent()
+        
+        notification.title = "You should return \(caption) to owner"
+        notification.body = "Please, hurry up!"
+        notification.sound = UNNotificationSound.default()
+        
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "returnItem", content: notification, trigger: notificationTrigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+        print("Notification being triggered")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        UserDefaults.standard.set([], forKey: "postsId")
+//        UserDefaults.standard.synchronize()
         //Observer for notification
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: ShareItemController.updateFeedNotificationName, object: nil)
         
         collectionView?.backgroundColor = appBackgroundColor
+        
+        UNUserNotificationCenter.current().delegate = self
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
@@ -31,6 +90,10 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
         setupNavigationItem()
         
         fetchAllPosts()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     func handleUpdateFeed() {
@@ -122,11 +185,11 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
                     })
                     
                     self.collectionView?.reloadData()
+                    self.findOutOfDate(posts: self.posts)
                 }, withCancel: { (err) in
                     print("Failed to fetch like info for post", err.localizedDescription)
                 })
             })
-            
         }) { (err) in
             print("Fail to fetch post", err.localizedDescription)
         }
